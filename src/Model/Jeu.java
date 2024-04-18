@@ -7,6 +7,7 @@ public class Jeu extends Observable {
 
     Case[][] tab;
     Heros h;
+
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
         h.seDeplacerVers(cCible,d);
@@ -44,5 +45,6 @@ public class Jeu extends Observable {
         if(contenuDansGrille(pCible)){
             Entite eCible = caseALaPosition(pCible).getEntite();
         }
+        return retour;
     }
 }
