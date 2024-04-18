@@ -1,10 +1,12 @@
 package Model;
 
 import java.awt.*;
+import java.util.Map;
 import java.util.Observable;
 
+@SuppressWarnings("deprecation")
 public class Jeu extends Observable {
-
+    Map<Case, Point> map;
     Case[][] tab;
     Heros h;
     public void deplacerHeros(Direction d){
@@ -45,4 +47,5 @@ public class Jeu extends Observable {
             Entite eCible = caseALaPosition(pCible).getEntite();
         }
     }
+
 }
