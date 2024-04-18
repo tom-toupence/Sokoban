@@ -16,11 +16,28 @@ public class Jeu extends Observable {
         notifyObservers();
     }
 
+    private void InitialisationNiveau() {
+        // murs
+        // TODO: il avait mis "new Mur(this)" dans l'initialisation de ses murs...
+        for (int i =0; i<20; i++){
+            addCase(new Mur(i,0), i, 0);
+            addCase(new Mur(i,9), i, 9);
+        }
+        for (int i =1; i<9; i++){
+            addCase(new Mur(0,i), 0, i);
+            addCase(new Mur(19,i), 19, i);
+        }
+    }
+
+    private Case getCible(Entite e, Direction d){
+        // TODO
+        return null;
+    }
 
 
 
     private void addCase(Case e, int x, int y){
-        
+        // TODO
     }
 
 
