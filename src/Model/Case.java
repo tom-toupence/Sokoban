@@ -8,6 +8,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Case extends Observable {
+
+    // TODO: re-définir les égalités (pour que la hashmap fonctionne)
+
     public int x;
     public int y;
     private List<Observer> observers = new ArrayList<>();
