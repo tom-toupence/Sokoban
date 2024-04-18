@@ -9,6 +9,9 @@ public class Jeu extends Observable {
     Map<Case, Point> map;
     Case[][] tab;
     Heros h;
+    int SIZE_X = 10;
+    int SIZE_Y = 10;
+
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
         h.seDeplacerVers(cCible,d);
@@ -48,4 +51,26 @@ public class Jeu extends Observable {
         }
     }
 
+    /**
+     * Envoie un booléen indiquant si la case est dans la grille.
+     * @param p
+     * @return
+     */
+    private boolean contenuDansGrille(Point p){
+        return p.x >= 0 && p.x < SIZE_X && p.y >= 0 && p.y < SIZE_Y;
+    }
+
+
+    /**
+     * Renvoie la case cible si le déplacement est possible, null sinon.
+     * @param p
+     * @return
+     */
+    private Case caseALaPosition(Point p){
+        Case retour = null;
+        if (contenuDansGrille(p)){
+            retour = tab[p.x][p.y];
+        }
+        return retour;
+    }
 }
