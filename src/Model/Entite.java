@@ -2,7 +2,7 @@ package Model;
 
 public class Entite {
     Case c;
-    
+
     public Entite() {
     }
 
@@ -14,4 +14,7 @@ public class Entite {
         c.entrer(this, d);
     }
 
+    public void pousser(Direction d){
+        // TODO
+    }
 }
