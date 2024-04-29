@@ -30,6 +30,17 @@ public class Jeu extends Observable {
             addCase(new Mur(0,i), 0, i);
             addCase(new Mur(19,i), 19, i);
         }
+
+
+        for (int x = 1; x<19; x++){
+            for (int y = 1; y<9; y++){
+                addCase(new Vide(this), x, y);
+            }
+        }
+
+        h = new Heros(this, tab[4][4]);
+        
+
     }
 
     private Case getCible(Entite e, Direction d){
@@ -40,7 +51,8 @@ public class Jeu extends Observable {
 
 
     private void addCase(Case e, int x, int y){
-        // TODO
+        tab[x][y] = e;
+        map.put(e, new Point(x,y));
     }
 
 

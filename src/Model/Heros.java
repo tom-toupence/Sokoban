@@ -13,8 +13,15 @@ public class Heros extends Entite  {
 
 
     public Heros(int x, int y){
+        super();
         this.x = x;
         this.y = y;
+    }
+
+    public Heros(Jeu jeu, Case c){
+        super(jeu, c);
+        this.x = c.x;
+        this.y = c.y;
     }
 
 
