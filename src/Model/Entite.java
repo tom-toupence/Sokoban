@@ -9,7 +9,7 @@ public class Entite extends Observable {
     Case c;
 
     public Entite(Jeu _jeu, Case _c) {
-        super(_jeu);
+        //super(_jeu);
         c = _c;
         c.setEntite(this);
 
