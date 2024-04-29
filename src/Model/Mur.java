@@ -7,11 +7,6 @@ public class Mur extends Case {
     }
 
     public boolean entrer(Entite e) {
-        if (e == null){
-            deplacer(e);
-            return true;
-        }
-        else {
         return false;
     }
 }

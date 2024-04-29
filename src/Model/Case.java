@@ -20,11 +20,16 @@ public class Case extends Observable {
         this.y = y;
     }
 
-    public void entrer(Entite e) {
-
+    public boolean entrer(Entite e) {
+        return false;
     }
 
     public Entite getEntite(){
+        return entite;
+    }
+
+    public Entite setEntite(Entite e){
+        entite = e;
         return entite;
     }
 
