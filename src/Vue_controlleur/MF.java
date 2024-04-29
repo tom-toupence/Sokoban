@@ -1,7 +1,5 @@
 package Vue_controlleur;
 
-import Model.Case;
-import Model.Direction;
 import Model.*;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -13,44 +11,53 @@ import java.util.Observer;
 import java.util.Random;
 
 public class MF extends JFrame implements Observer {
-    int L = 10;
-    int H = 10;
     JPanel[][] tabC;
-    private Random random;
-    private Case c;
 
     public Jeu jeu;
-    public MF(Case c) {
-        this.c = c;
-        random = new Random();
-        tabC = new JPanel[L][H];
+    public MF() {
+        tabC = new JPanel[20][20];
         jeu = new Jeu();
-        jeu.InitialisationNiveau();
+        jeu.InitialisationNiveau(this);
         // addEC();
     }
 
     public void build() {
-        JPanel jp = new JPanel(new BorderLayout());
-        JPanel jpC = new JPanel(new GridLayout(L, H));
-        this.setLocation(400, 50); // Centrer la fenêtre
-        setSize(750, 750);
-        // JPanel jpInfo = ....
-        jp.add(jpC, BorderLayout.CENTER);
-        // jp.add(jpInfo, BorderLayout.EAST);
-        Border blackline = BorderFactory.createLineBorder(Color.BLACK);
-        add(jp);
-        for (int i = 0; i < L; i++) {
-            for (int j = 0; j < H; j++) {
-                tabC[i][j] = new JPanel();
-                tabC[i][j].setBackground(Color.WHITE);
-                tabC[i][j].setBorder(blackline);
-                jpC.add(tabC[i][j]);
-            }
-        }
-        tabC[c.x][c.y].setBackground(Color.black);
-        jp.setBorder(blackline);
+    JPanel jp = new JPanel(new BorderLayout());
+    JPanel jpC = new JPanel(new GridLayout(jeu.SIZE_X, jeu.SIZE_Y));
+    this.setLocation(400, 50); // Centrer la fenêtre
+    setSize(750, 750);
+    // JPanel jpInfo = ....
+    jp.add(jpC, BorderLayout.CENTER);
+    // jp.add(jpInfo, BorderLayout.EAST);
+    Border blackline = BorderFactory.createLineBorder(Color.BLACK);
+    add(jp);
 
+    for (int i = 0; i < jeu.SIZE_X; i++) {
+        for (int j = 0; j < jeu.SIZE_Y; j++) {
+            tabC[i][j] = new JPanel();
+            tabC[i][j].setBorder(blackline);
+            jpC.add(tabC[i][j]);
+        }
     }
+
+    // Parcourir le tableau tab et mettre à jour les couleurs en fonction du type de case
+    for (int x = 0; x < jeu.SIZE_X; x++) {
+        for (int y = 0; y < jeu.SIZE_Y; y++) {
+            if (jeu.tab[x][y] instanceof Mur) {
+                tabC[x][y].setBackground(Color.GRAY);
+            } else if (jeu.tab[x][y] instanceof Vide) {
+                tabC[x][y].setBackground(Color.WHITE);
+            }
+            Point positionHeros = jeu.h.getPosition();
+            if (positionHeros != null) {
+                tabC[positionHeros.x][positionHeros.y].setBackground(Color.BLUE);
+            }
+                           
+        }
+    }
+
+    jp.setBorder(blackline);
+}
 
     /* public void addEC() {
         addKeyListener(new KeyAdapter() {

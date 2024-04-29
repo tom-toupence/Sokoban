@@ -4,13 +4,19 @@ import java.awt.*;
 import java.util.Map;
 import java.util.Observable;
 
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
+import Vue_controlleur.MF;
+
 @SuppressWarnings("deprecation")
 public class Jeu extends Observable {
-    Map<Case, Point> map;
-    Heros h;
-    int SIZE_X = 20;
-    int SIZE_Y = 20;
-    Case[][] tab;
+    private Map<Case, Point> map;
+    public Heros h;
+    public int SIZE_X = 20;
+    public int SIZE_Y = 20;
+    public Case[][] tab;
+    private MF mf;
 
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
@@ -19,14 +25,15 @@ public class Jeu extends Observable {
         notifyObservers();
     }
 
-    public void InitialisationNiveau() {
+    public void InitialisationNiveau(MF mf) {
         // murs
         // TODO: il avait mis "new Mur(this)" dans l'initialisation de ses murs...
         tab = new Case[SIZE_X][SIZE_Y];
         map = new java.util.HashMap<>();
-        for (int i =0; i<10; i++){
+
+        for (int i =0; i<20; i++){
             addCase(new Mur(i,0), i, 0);
-            addCase(new Mur(i,9), i, 9);
+            addCase(new Mur(i,19), i, 19);
         }
         for (int i =1; i<20; i++){
             addCase(new Mur(0,i), 0, i);
@@ -36,12 +43,18 @@ public class Jeu extends Observable {
 
         for (int x = 1; x<19; x++){
             for (int y = 1; y<9; y++){
-                //addCase(new Vide(this), x, y);
+                addCase(new Vide(x,y),x,y);
             }
         }
 
         h = new Heros(this, tab[4][4]);
         Bloc b = new Bloc(this, tab[6][6]);
+
+        mf.build();
+
+        setChanged();
+        notifyObservers();
+
 
     }
 
