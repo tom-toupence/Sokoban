@@ -66,6 +66,10 @@ public class Jeu extends Observable {
         if(contenuDansGrille(pCible)){
             Entite eCible = caseALaPosition(pCible).getEntite();
         }
+
+        // TODO : rectifier le return
+
+        return retour;
     }
 
     /**

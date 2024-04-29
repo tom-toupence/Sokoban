@@ -27,6 +27,10 @@ public class Entite extends Observable {
         c = _c;
     }
 
+    public Case getCase(){
+        return c;
+    }
+
     public void allerSurCase(Case _c){
         c = _c;
     }
