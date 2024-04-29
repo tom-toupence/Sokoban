@@ -15,13 +15,13 @@ public class Entite extends Observable {
 
     }
 
-    public boolean seDeplacerVers(Case c,Direction d){
+    public void seDeplacerVers(Case c,Direction d){
         Entite e = c.getEntite();
         if(e==null){
-            e.entrer(d);
+            c.entrer(this,d);
         }
         else{
-            return e.pousser(d);
+            e.pousser(d);
         }
 
     }
