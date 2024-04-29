@@ -1,20 +1,43 @@
 package Model;
 
-public class Entite {
+import java.util.Observable;
+
+
+public class Entite extends Observable {
+
+
     Case c;
 
-    public Entite() {
+    public Entite(Jeu _jeu, Case _c) {
+        super(_jeu);
+        c = _c;
+        c.setEntite(this);
+
     }
 
     public void seDeplacerVers(Case c,Direction d){
-        Entite e = c.getEntite();
-        if(e == null){
-            e.pousser(d);
-        }
-        c.entrer(this, d);
+
     }
 
-    public void pousser(Direction d){
-        // TODO
+    public void quitterCase(){
+        c=null;
     }
+
+    public void setCase(Case _c){
+        c = _c;
+    }
+
+    public void allerSurCase(Case _c){
+        c = _c;
+    }
+
+    public boolean pousser(Direction d){
+        return false;
+    }
+
+    public boolean avancerDirectionChoisie(Direction d){
+        return jeu.deplacerEntite(this,d);
+    }
+    
+
 }
