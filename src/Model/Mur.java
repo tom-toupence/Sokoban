@@ -12,8 +12,13 @@ public class Mur extends Case {
             return true;
         }
         else {
-        return false;
+            return false;
+        }
     }
-}
+
+    public boolean deplacer(Entite e){
+        // TODO
+        return true;
+    }
 
 }
