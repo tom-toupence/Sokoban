@@ -7,6 +7,7 @@ public class Bloc extends Entite {
     }
 
     public boolean pousser(Direction d){
-        return jeu.deplacerEntite(this,d);
+        //return jeu.deplacerEntite(this,d);
+        return false;
     }
 }

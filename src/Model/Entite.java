@@ -47,7 +47,8 @@ public class Entite extends Observable {
     }
 
     public boolean avancerDirectionChoisie(Direction d){
-        return jeu.deplacerEntite(this,d);
+        //return jeu.deplacerEntite(this,d);
+        return false;
     }
     
 

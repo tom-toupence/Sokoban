@@ -7,10 +7,10 @@ import java.util.Observable;
 @SuppressWarnings("deprecation")
 public class Jeu extends Observable {
     Map<Case, Point> map;
-    Case[][] tab;
     Heros h;
-    int SIZE_X = 10;
-    int SIZE_Y = 10;
+    int SIZE_X = 20;
+    int SIZE_Y = 20;
+    Case[][] tab;
 
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
@@ -19,14 +19,16 @@ public class Jeu extends Observable {
         notifyObservers();
     }
 
-    private void InitialisationNiveau() {
+    public void InitialisationNiveau() {
         // murs
         // TODO: il avait mis "new Mur(this)" dans l'initialisation de ses murs...
-        for (int i =0; i<20; i++){
+        tab = new Case[SIZE_X][SIZE_Y];
+        map = new java.util.HashMap<>();
+        for (int i =0; i<10; i++){
             addCase(new Mur(i,0), i, 0);
             addCase(new Mur(i,9), i, 9);
         }
-        for (int i =1; i<9; i++){
+        for (int i =1; i<20; i++){
             addCase(new Mur(0,i), 0, i);
             addCase(new Mur(19,i), 19, i);
         }
@@ -34,12 +36,12 @@ public class Jeu extends Observable {
 
         for (int x = 1; x<19; x++){
             for (int y = 1; y<9; y++){
-                addCase(new Vide(this), x, y);
+                //addCase(new Vide(this), x, y);
             }
         }
 
         h = new Heros(this, tab[4][4]);
-        
+        Bloc b = new Bloc(this, tab[6][6]);
 
     }
 

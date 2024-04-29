@@ -2,7 +2,7 @@ package Vue_controlleur;
 
 import Model.Case;
 import Model.Direction;
-
+import Model.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -19,12 +19,14 @@ public class MF extends JFrame implements Observer {
     private Random random;
     private Case c;
 
+    public Jeu jeu;
     public MF(Case c) {
         this.c = c;
         random = new Random();
         tabC = new JPanel[L][H];
-        build();
-        addEC();
+        jeu = new Jeu();
+        jeu.InitialisationNiveau();
+        // addEC();
     }
 
     public void build() {
@@ -50,7 +52,7 @@ public class MF extends JFrame implements Observer {
 
     }
 
-    public void addEC() {
+    /* public void addEC() {
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
@@ -71,7 +73,7 @@ public class MF extends JFrame implements Observer {
         });
         requestFocus();
     }
-
+*/
     @Override
     public void update(Observable o, Object arg) {
         for (int i = 0; i < H; i++) {

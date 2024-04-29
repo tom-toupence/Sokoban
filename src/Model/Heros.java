@@ -12,11 +12,11 @@ public class Heros extends Entite  {
     private List<Observer> observers = new ArrayList<>();
 
 
-    public Heros(int x, int y){
+    /*public Heros(int x, int y){
         super();
         this.x = x;
         this.y = y;
-    }
+    }*/
 
     public Heros(Jeu jeu, Case c){
         super(jeu, c);
