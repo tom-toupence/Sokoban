@@ -31,51 +31,55 @@ public class Heros extends Entite  {
     }
     
 
-    public void seDeplacer(Direction j) {
+    /* public void seDeplacer(Direction j) {
         switch (j) {
             case UP:
-                if (this.y > 0) {
-                    this.y--;
-                    break;
-                } else {
-                    break;
+                if (x > 0) {
+                    x--;
                 }
+                break;
             case DOWN:
-                if (this.y < 9) {
-                    this.y++;
-                    break;
-                } else {
-                    break;
+                if (x < 19) {
+                    x++;
                 }
+                break;
             case LEFT:
-                if (this.x > 0) {
-                    this.x--;
-                    break;
-                } else {
-                    break;
+                if (y > 0) {
+                    y--;
                 }
+                break;
             case RIGHT:
-                if (this.x < 9) {
-                    this.x++;
-                    break;
-                } else {
-                    break;
+                if (y < 19) {
+                    y++;
                 }
+                break;
         }
         setChanged();
         notifyObservers();
-    }
+    }*/
 
     @Override
     public boolean seDeplacerVers(Case c, Direction d){
+
+
         if(c instanceof Mur){
             return false;
         }
-        if(c instanceof Vide)
-        {
-            c.entrer(this, d);
-            return true;    
+
+        if(c instanceof Vide){
+            int x = c.getX();
+            int y = c.getY();
+            this.x = x;
+            this.y = y;
+            return true;
         }
         return true;
     }
+
+
+
+    @Override
+    public void avancerDirectionChoisie(Case c, Direction d) {
+        
+    }   
 }

@@ -18,7 +18,7 @@ public class MF extends JFrame implements Observer {
         tabC = new JPanel[20][20];
         jeu = new Jeu();
         jeu.InitialisationNiveau(this);
-        // addEC();
+        addEC();
     }
 
     public void build() {
@@ -58,37 +58,45 @@ public class MF extends JFrame implements Observer {
         jp.setBorder(blackline);
     }
 
-    /* public void addEC() {
+    public void addEC() {
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_LEFT:
-                        c.move(Direction.LEFT);
+                        jeu.deplacerHeros(Direction.LEFT);
                         break;
                     case KeyEvent.VK_RIGHT:
-                        c.move(Direction.RIGHT);
+                        jeu.deplacerHeros(Direction.RIGHT);
                         break;
                     case KeyEvent.VK_UP:
-                        c.move(Direction.UP);
+                        jeu.deplacerHeros(Direction.UP);
                         break;
                     case KeyEvent.VK_DOWN:
-                        c.move(Direction.DOWN);
+                        jeu.deplacerHeros(Direction.DOWN);
                         break;
                 }
             }
         });
         requestFocus();
     }
-*/
+
     @Override
     public void update(Observable o, Object arg) {
-        for (int i = 0; i < H; i++) {
-            for (int j = 0; j < L; j++) {
-                tabC[i][j].setBackground(Color.WHITE);
+        for (int x = 0; x < jeu.SIZE_X; x++) {
+            for (int y = 0; y < jeu.SIZE_Y; y++) {
+                if (jeu.tab[x][y] instanceof Mur) {
+                    tabC[x][y].setBackground(Color.GRAY);
+                } else if (jeu.tab[x][y] instanceof Vide) {
+                    tabC[x][y].setBackground(Color.WHITE);
+                }
             }
         }
-        tabC[c.y][c.x].setBackground(Color.black);
+        
+        // Mettre à jour la position du héros
+        Point positionHeros = jeu.h.getPosition();
+        if (positionHeros != null) {
+            tabC[positionHeros.x][positionHeros.y].setBackground(Color.BLUE);
+        }
     }
 }
-
 

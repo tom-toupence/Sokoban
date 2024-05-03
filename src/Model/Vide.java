@@ -6,9 +6,9 @@ public class Vide extends Case {
         super(x, y);
     } 
 
-    public boolean entrer(Entite e, Direction d) {
-        if(e == null){
-            e.avancerDirectionChoisie(d);
+    public boolean entrer(Entite e, Direction d, Case c) {
+        if(e instanceof Heros){
+            e.avancerDirectionChoisie(c,d);
             return true;
         }
         else{

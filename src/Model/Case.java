@@ -20,7 +20,17 @@ public class Case extends Observable {
         this.y = y;
     }
 
-    public boolean entrer(Entite e, Direction d) {
+
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+
+    public boolean entrer(Entite e, Direction d, Case c) {
         return true;
     }
 

@@ -18,18 +18,13 @@ public class Jeu extends Observable {
     public Case[][] tab;
     private MF mf;
 
-    public void deplacerHeros(Direction d){
-        Case cCible = getCible(h,d);
-        h.seDeplacerVers(cCible,d);
-        setChanged();
-        notifyObservers();
-    }
 
     public void InitialisationNiveau(MF mf) {
         // murs
         // TODO: il avait mis "new Mur(this)" dans l'initialisation de ses murs...
         tab = new Case[SIZE_X][SIZE_Y];
         map = new java.util.HashMap<>();
+        this.addObserver(mf);
 
         for (int i =0; i<20; i++){
             addCase(new Mur(i,0), i, 0);
@@ -40,9 +35,8 @@ public class Jeu extends Observable {
             addCase(new Mur(19,i), 19, i);
         }
 
-
         for (int x = 1; x<19; x++){
-            for (int y = 1; y<9; y++){
+            for (int y = 1; y<19; y++){
                 addCase(new Vide(x,y),x,y);
             }
         }
@@ -51,19 +45,44 @@ public class Jeu extends Observable {
         Bloc b = new Bloc(this, tab[6][6]);
 
         mf.build();
-
         setChanged();
         notifyObservers();
 
 
     }
+ 
 
-    private Case getCible(Entite e, Direction d){
-        // TODO
-        return null;
+
+    private Case getCible(Heros h, Direction d){
+        Point positionHeros = h.getPosition();
+    
+        int x = positionHeros.x;
+        int y = positionHeros.y;
+        
+        
+        switch(d){
+            case UP:x--;break;
+            case DOWN: x++; break;
+            case LEFT: y--; break;
+            case RIGHT: y++; break;
+        }
+
+    
+        Point pCible = new Point(x, y);
+        if (contenuDansGrille(pCible)) {
+            return tab[x][y];
+        } else {
+            return null;
+        }
+    } 
+
+    public void deplacerHeros(Direction d){
+        Case cCible = getCible(h,d);
+        h.quitterCase();
+        h.seDeplacerVers(cCible,d);
+        setChanged();
+        notifyObservers();
     }
-
-
 
     private void addCase(Case e, int x, int y){
         tab[x][y] = e;
