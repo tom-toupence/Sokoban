@@ -17,13 +17,15 @@ public class Jeu extends Observable {
     public int SIZE_Y = 20;
     public Case[][] tab;
     private MF mf;
-
+    public Bloc[][] tabB;
+    public Bloc b;
 
     public void InitialisationNiveau(MF mf) {
         // murs
         // TODO: il avait mis "new Mur(this)" dans l'initialisation de ses murs...
         tab = new Case[SIZE_X][SIZE_Y];
         map = new java.util.HashMap<>();
+        
         this.addObserver(mf);
 
         for (int i =0; i<20; i++){
@@ -42,7 +44,12 @@ public class Jeu extends Observable {
         }
 
         h = new Heros(this, tab[4][4]);
-        Bloc b = new Bloc(this, tab[6][6]);
+        b = new Bloc(this, tab[6][6]); 
+
+        tabB = new Bloc[SIZE_X][SIZE_Y];
+        tabB[6][6] = b;
+
+        
 
         mf.build();
         setChanged();
@@ -76,38 +83,49 @@ public class Jeu extends Observable {
         }
     } 
 
+
+    // Méthode pour déplacer le héros
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
-        h.quitterCase();
         h.seDeplacerVers(cCible,d);
         setChanged();
         notifyObservers();
     }
 
+
+    // Méthode pour ajouter les cases dans la grille
     private void addCase(Case e, int x, int y){
         tab[x][y] = e;
         map.put(e, new Point(x,y));
     }
 
-
-    private Point calculerPointCible(Point pCourant, Direction d){
+    
+    // Méthode pour calculer la case cible
+    public Case calculerPointCible(Case c, Direction d){
         Point pCible = null;
 
         switch(d){
-            case UP: pCible = new Point(pCourant.x, pCourant.y - 1);break;
-            case DOWN: pCible = new Point(pCourant.x, pCourant.y + 1);break;
-            case LEFT: pCible = new Point(pCourant.x - 1, pCourant.y);break;
-            case RIGHT: pCible = new Point(pCourant.x + 1, pCourant.y);break;
+            case UP: pCible = new Point(c.x-1, c.y);break;
+            case DOWN: pCible = new Point(c.x+1, c.y);break;
+            case LEFT: pCible = new Point(c.x, c.y -1);break;
+            case RIGHT: pCible = new Point(c.x, c.y+1);break;
         }
-        return pCible;
+        if (contenuDansGrille(pCible)){
+            return tab[pCible.x][pCible.y];
+        } else {
+            return null;
+        }
     }
 
-    public boolean deplacerEntite(Entite e, Direction d){
+
+
+    // Méthode pour déplacer une entité
+    /* public boolean deplacerEntite(Entite e, Direction d){
         boolean retour = true;
 
         Point pCourant = map.get(e.getCase());
 
-        Point pCible = calculerPointCible(pCourant,d);
+        Point pCible = calculerPointCible(e.getCase(),d);
 
         if(contenuDansGrille(pCible)){
             Entite eCible = caseALaPosition(pCible).getEntite();
@@ -116,7 +134,9 @@ public class Jeu extends Observable {
         // TODO : rectifier le return
 
         return retour;
-    }
+    } */
+
+
 
     /**
      * Envoie un booléen indiquant si la case est dans la grille.

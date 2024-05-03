@@ -31,33 +31,6 @@ public class Heros extends Entite  {
     }
     
 
-    /* public void seDeplacer(Direction j) {
-        switch (j) {
-            case UP:
-                if (x > 0) {
-                    x--;
-                }
-                break;
-            case DOWN:
-                if (x < 19) {
-                    x++;
-                }
-                break;
-            case LEFT:
-                if (y > 0) {
-                    y--;
-                }
-                break;
-            case RIGHT:
-                if (y < 19) {
-                    y++;
-                }
-                break;
-        }
-        setChanged();
-        notifyObservers();
-    }*/
-
     @Override
     public boolean seDeplacerVers(Case c, Direction d){
 
@@ -67,13 +40,21 @@ public class Heros extends Entite  {
         }
 
         if(c instanceof Vide){
+            if(c.getEntite() instanceof Bloc){
+                c.getEntite().pousser(d);
+                if(c instanceof Mur){
+                    return false;
+                }
+            } else{
+
+            System.out.println("Heros se déplace à la case : " + c.x + " " + c.y);
             int x = c.getX();
             int y = c.getY();
             this.x = x;
             this.y = y;
-            return true;
-        }
-        return true;
+            return true;        }
+    }
+    return true;
     }
 
 

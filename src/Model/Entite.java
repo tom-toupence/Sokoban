@@ -5,23 +5,22 @@ import java.util.Observable;
 
 public class Entite extends Observable {
 
-
+    Jeu jeu;
     Case c;
 
     public Entite(Jeu _jeu, Case _c) {
-        //super(_jeu);
+        this.jeu = _jeu;
         c = _c;
         c.setEntite(this);
 
     }
 
     public boolean seDeplacerVers(Case c,Direction d){
-        return true;
-        
-        /* Entite e = c.getEntite();
+        Entite e = c.getEntite();
         if(e!=null){
             e.pousser(d);
-        }*/
+        }
+        return true;
     }
 
     public void quitterCase(){
