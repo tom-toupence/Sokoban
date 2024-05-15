@@ -37,13 +37,15 @@ public class Heros extends Entite  {
             return false;
         }
 
-        if(c instanceof Vide){
+        if(c instanceof Vide || c instanceof Arrivee){
             if(c.getEntite() instanceof Bloc){
                 if(c.getEntite().pousser(d) == false){
                     return false;
                 }
             }
             System.out.println("Heros se déplace à la case : " + c.x + " " + c.y);
+            c.setEntite(this);
+            this.setCase(c);
             int x = c.getX();
             int y = c.getY();
             this.x = x;

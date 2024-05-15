@@ -41,6 +41,7 @@ public class Jeu extends Observable {
             }
         }
 
+        addCase(new Arrivee(10,10), 10, 10);
         h = new Heros(this, tab[4][4]);
         b = new Bloc(this, tab[6][6]); 
 
@@ -57,23 +58,21 @@ public class Jeu extends Observable {
     
 
     private Case getCible(Heros h, Direction d){
-        Point positionHeros = h.getPosition();
-    
-        int x = positionHeros.x;
-        int y = positionHeros.y;
+        Case cHeros = h.getCase();
         
-        
+        Point pCible = map.get(cHeros);
+        int x = pCible.x;
+        int y = pCible.y;
+
         switch(d){
             case UP:x--;break;
-            case DOWN: x++; break;
+            case DOWN:x++; break;
             case LEFT: y--; break;
-            case RIGHT: y++; break;
+            case RIGHT:y++; break;
         }
-
-    
-        Point pCible = new Point(x, y);
-        if (contenuDansGrille(pCible)) {
-            return tab[x][y];
+        Point p = new Point(x,y);
+        if (contenuDansGrille(p)) {
+            return tab[p.x][p.y];
         } else {
             return null;
         }

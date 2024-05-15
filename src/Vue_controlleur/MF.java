@@ -91,6 +91,8 @@
                         tabC[x][y].setBackground(Color.GRAY);
                     } else if (jeu.tab[x][y] instanceof Vide) {
                         tabC[x][y].setBackground(Color.WHITE);
+                    } else if (jeu.tab[x][y] instanceof Arrivee) {
+                        tabC[x][y].setBackground(Color.GREEN);
                     }
                 }
             }
