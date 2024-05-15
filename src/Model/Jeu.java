@@ -21,8 +21,6 @@ public class Jeu extends Observable {
     public Bloc b;
 
     public void InitialisationNiveau(MF mf) {
-        // murs
-        // TODO: il avait mis "new Mur(this)" dans l'initialisation de ses murs...
         tab = new Case[SIZE_X][SIZE_Y];
         map = new java.util.HashMap<>();
         
@@ -49,8 +47,6 @@ public class Jeu extends Observable {
         tabB = new Bloc[SIZE_X][SIZE_Y];
         tabB[6][6] = b;
 
-        
-
         mf.build();
         setChanged();
         notifyObservers();
@@ -58,7 +54,7 @@ public class Jeu extends Observable {
 
     }
  
-
+    
 
     private Case getCible(Heros h, Direction d){
         Point positionHeros = h.getPosition();
@@ -94,9 +90,9 @@ public class Jeu extends Observable {
 
 
     // Méthode pour ajouter les cases dans la grille
-    private void addCase(Case e, int x, int y){
-        tab[x][y] = e;
-        map.put(e, new Point(x,y));
+    private void addCase(Case c, int x, int y){
+        tab[x][y] = c;
+        map.put(c, new Point(x,y));
     }
 
     

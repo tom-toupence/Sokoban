@@ -6,7 +6,7 @@ public class Mur extends Case {
         super(x, y);
     }
 
-    public boolean entrer(Entite e) {
+    public boolean entrer(Entite e, Direction d, Case c) {
         return false;
     }
 

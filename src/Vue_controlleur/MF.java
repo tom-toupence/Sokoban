@@ -91,9 +91,6 @@
                         tabC[x][y].setBackground(Color.GRAY);
                     } else if (jeu.tab[x][y] instanceof Vide) {
                         tabC[x][y].setBackground(Color.WHITE);
-                        if (jeu.tabB[x][y] != null) {
-                            tabC[x][y].setBackground(Color.RED);
-                        }
                     }
                 }
             }

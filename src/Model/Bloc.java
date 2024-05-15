@@ -26,9 +26,6 @@ public class Bloc extends Entite {
         Case c = this.getCase();
         Case cCible = jeu.calculerPointCible(c, d);
         if (cCible != null && cCible.entrer(this, d, cCible)) {
-            if(cCible instanceof Mur){
-                return false;
-            }
             System.out.println("Bloc déplacé");
             c.setEntite(null);
             cCible.setEntite(this);

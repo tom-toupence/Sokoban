@@ -33,28 +33,25 @@ public class Heros extends Entite  {
 
     @Override
     public boolean seDeplacerVers(Case c, Direction d){
-
-
         if(c instanceof Mur){
             return false;
         }
 
         if(c instanceof Vide){
             if(c.getEntite() instanceof Bloc){
-                c.getEntite().pousser(d);
-                if(c instanceof Mur){
+                if(c.getEntite().pousser(d) == false){
                     return false;
                 }
-            } else{
-
+            }
             System.out.println("Heros se déplace à la case : " + c.x + " " + c.y);
             int x = c.getX();
             int y = c.getY();
             this.x = x;
             this.y = y;
-            return true;        }
-    }
-    return true;
+            return true;
+           
+        }
+        return true;
     }
 
 
