@@ -40,6 +40,7 @@ public class Jeu extends Observable {
                 addCase(new Vide(x,y),x,y);
             }
         }
+        
 
         addCase(new Arrivee(10,10), 10, 10);
         h = new Heros(this, tab[4][4]);
@@ -53,14 +54,12 @@ public class Jeu extends Observable {
         notifyObservers();
 
 
-    }
- 
-    
+    } 
 
-    private Case getCible(Heros h, Direction d){
-        Case cHeros = h.getCase();
+    public Case getCible(Entite e, Direction d){
+        Case cE = e.getCase();
         
-        Point pCible = map.get(cHeros);
+        Point pCible = map.get(cE);
         int x = pCible.x;
         int y = pCible.y;
 
@@ -94,45 +93,6 @@ public class Jeu extends Observable {
         map.put(c, new Point(x,y));
     }
 
-    
-    // Méthode pour calculer la case cible
-    public Case calculerPointCible(Case c, Direction d){
-        Point pCible = null;
-
-        switch(d){
-            case UP: pCible = new Point(c.x-1, c.y);break;
-            case DOWN: pCible = new Point(c.x+1, c.y);break;
-            case LEFT: pCible = new Point(c.x, c.y -1);break;
-            case RIGHT: pCible = new Point(c.x, c.y+1);break;
-        }
-        if (contenuDansGrille(pCible)){
-            return tab[pCible.x][pCible.y];
-        } else {
-            return null;
-        }
-    }
-
-
-
-    // Méthode pour déplacer une entité
-    /* public boolean deplacerEntite(Entite e, Direction d){
-        boolean retour = true;
-
-        Point pCourant = map.get(e.getCase());
-
-        Point pCible = calculerPointCible(e.getCase(),d);
-
-        if(contenuDansGrille(pCible)){
-            Entite eCible = caseALaPosition(pCible).getEntite();
-        }
-
-        // TODO : rectifier le return
-
-        return retour;
-    } */
-
-
-
     /**
      * Envoie un booléen indiquant si la case est dans la grille.
      * @param p
@@ -140,19 +100,5 @@ public class Jeu extends Observable {
      */
     private boolean contenuDansGrille(Point p){
         return p.x >= 0 && p.x < SIZE_X && p.y >= 0 && p.y < SIZE_Y;
-    }
-
-
-    /**
-     * Renvoie la case cible si le déplacement est possible, null sinon.
-     * @param p
-     * @return
-     */
-    private Case caseALaPosition(Point p){
-        Case retour = null;
-        if (contenuDansGrille(p)){
-            retour = tab[p.x][p.y];
-        }
-        return retour;
     }
 }

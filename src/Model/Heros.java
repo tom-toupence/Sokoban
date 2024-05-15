@@ -43,23 +43,13 @@ public class Heros extends Entite  {
                     return false;
                 }
             }
-            System.out.println("Heros se déplace à la case : " + c.x + " " + c.y);
             c.setEntite(this);
             this.setCase(c);
-            int x = c.getX();
-            int y = c.getY();
-            this.x = x;
-            this.y = y;
+            this.x = c.getX();
+            this.y = c.getY();
             return true;
            
         }
         return true;
-    }
-
-
-
-    @Override
-    public void avancerDirectionChoisie(Case c, Direction d) {
-        
-    }   
+    }  
 }

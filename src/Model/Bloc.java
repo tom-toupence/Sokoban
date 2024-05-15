@@ -14,30 +14,19 @@ public class Bloc extends Entite {
 
 
     public boolean pousser(Direction d){
-        if(this.deplacerEntite(this.jeu, d)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return this.deplacerEntite(this.jeu, d);
     }
 
     public boolean deplacerEntite(Jeu jeu, Direction d){
         Case c = this.getCase();
-        Case cCible = jeu.calculerPointCible(c, d);
+        Case cCible = jeu.getCible(c.getEntite(), d);
         if (cCible != null && cCible.entrer(this, d, cCible)) {
-            System.out.println("Bloc déplacé");
             c.setEntite(null);
             cCible.setEntite(this);
             this.setCase(cCible);
             return true;
         }
         return false;
-    }
-
-    public void avancerDirectionChoisie(Case c,Direction d){
-        return;
-        
     }
 }
 

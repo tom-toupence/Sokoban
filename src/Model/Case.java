@@ -11,7 +11,6 @@ import java.util.Observer;
 public class Case extends Observable {
     public int y;
     public int x;
-    private List<Observer> observers = new ArrayList<>();
 
     Entite entite;
 

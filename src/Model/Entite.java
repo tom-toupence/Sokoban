@@ -43,9 +43,4 @@ public class Entite extends Observable {
         return false;
     }
 
-    public void avancerDirectionChoisie(Case c,Direction d){
-        return;
-    }
-    
-
 }

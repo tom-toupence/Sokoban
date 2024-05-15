@@ -26,9 +26,7 @@
             JPanel jpC = new JPanel(new GridLayout(jeu.SIZE_X, jeu.SIZE_Y));
             this.setLocation(400, 50); // Centrer la fenêtre
             setSize(750, 750);
-            // JPanel jpInfo = ....
             jp.add(jpC, BorderLayout.CENTER);
-            // jp.add(jpInfo, BorderLayout.EAST);
             Border blackline = BorderFactory.createLineBorder(Color.BLACK);
             add(jp);
             for (int i = 0; i < jeu.SIZE_X; i++) {
@@ -106,7 +104,12 @@
             Point positionBloc = jeu.b.getPosition();
             if (positionBloc != null) {
                 tabC[positionBloc.x][positionBloc.y].setBackground(Color.RED);
+                if (jeu.tab[positionBloc.x][positionBloc.y] instanceof Arrivee) {
+                    System.out.println("c'est gagné !");
+                }
             }
+
+            
         }
     }
 
