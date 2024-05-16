@@ -21,15 +21,6 @@ public class MF extends JFrame implements Observer {
         addEC();
     }
 
-    private void loadImages() {
-        Mur = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Mur.png");
-        Vide = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Sol.png");
-        Heros = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Heros.png");
-        Bloc = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Bloc.png");
-        Arrivee = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Arrivee.png");
-        Favicon = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Favicon.png");
-    }
-
     public void build() {
         this.setTitle("Sokoban");
         this.setSize(jeu.SIZE_X*64, jeu.SIZE_Y*64);
@@ -42,7 +33,7 @@ public class MF extends JFrame implements Observer {
 
         JPanel buttonPanel = new JPanel();
         JButton quitButton = new JButton("Quitter");
-        JButton retryButton = new JButton("Reessayer");
+        JButton retryButton = new JButton("Réessayer");
         buttonPanel.add(retryButton);
         buttonPanel.add(quitButton);
         jp.add(buttonPanel, BorderLayout.SOUTH);
@@ -66,7 +57,6 @@ public class MF extends JFrame implements Observer {
             for (int j = 0; j < jeu.SIZE_Y; j++) {
                 tabC[i][j] = new JPanel(new BorderLayout());
                 tabC[i][j].setLayout(new OverlayLayout(tabC[i][j]));
-                tabC[i][j].setBorder(new EmptyBorder(0, 0, 0, 0));
                 jpC.add(tabC[i][j]);
             }
         }
@@ -154,4 +144,14 @@ public class MF extends JFrame implements Observer {
             repaint();
         }
     }
+
+    private void loadImages() {
+        Mur = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Mur.png");
+        Vide = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Sol.png");
+        Heros = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Heros.png");
+        Bloc = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Bloc.png");
+        Arrivee = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Arrivee.png");
+        Favicon = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Favicon.png");
+    }
+    
 }

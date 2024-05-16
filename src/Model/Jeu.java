@@ -22,9 +22,6 @@ public class Jeu extends Observable {
 
     public void InitialisationNiveau(MF mf) {
 
-        // On supprime les observateurs si jamais on réinitialise le niveau
-        deleteObservers();
-
         // Réinitialiser les tableaux et les cartes
         tab = new Case[SIZE_X][SIZE_Y];
         map = new java.util.HashMap<>();
