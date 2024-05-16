@@ -13,41 +13,44 @@ import Vue_controlleur.MF;
 public class Jeu extends Observable {
     private Map<Case, Point> map;
     public Heros h;
-    public int SIZE_X = 20;
-    public int SIZE_Y = 20;
+    public int SIZE_X = 10;
+    public int SIZE_Y = 10;
     public Case[][] tab;
     private MF mf;
     public Bloc[][] tabB;
     public Bloc b;
 
     public void InitialisationNiveau(MF mf) {
+
+        // On supprime les observateurs si jamais on réinitialise le niveau
+        deleteObservers();
+
+        // Réinitialiser les tableaux et les cartes
         tab = new Case[SIZE_X][SIZE_Y];
         map = new java.util.HashMap<>();
-        
+        tabB = new Bloc[SIZE_X][SIZE_Y];
+
+
         this.addObserver(mf);
 
-        for (int i =0; i<20; i++){
+        for (int i =0; i<10; i++){
             addCase(new Mur(i,0), i, 0);
-            addCase(new Mur(i,19), i, 19);
+            addCase(new Mur(i,9), i, 9);
         }
-        for (int i =1; i<20; i++){
+        for (int i =1; i<10; i++){
             addCase(new Mur(0,i), 0, i);
-            addCase(new Mur(19,i), 19, i);
+            addCase(new Mur(9,i), 9, i);
         }
 
-        for (int x = 1; x<19; x++){
-            for (int y = 1; y<19; y++){
+        for (int x = 1; x<9; x++){
+            for (int y = 1; y<9; y++){
                 addCase(new Vide(x,y),x,y);
             }
-        }
-        
+        }        
 
-        addCase(new Arrivee(10,10), 10, 10);
+        addCase(new Arrivee(3,3), 3, 3);
         h = new Heros(this, tab[4][4]);
-        b = new Bloc(this, tab[6][6]); 
-
-        tabB = new Bloc[SIZE_X][SIZE_Y];
-        tabB[6][6] = b;
+        b = new Bloc(this, tab[6][6]);
 
         mf.build();
         setChanged();
@@ -93,11 +96,7 @@ public class Jeu extends Observable {
         map.put(c, new Point(x,y));
     }
 
-    /**
-     * Envoie un booléen indiquant si la case est dans la grille.
-     * @param p
-     * @return
-     */
+    // Méthode pour vérifier si la case est dans la grille
     private boolean contenuDansGrille(Point p){
         return p.x >= 0 && p.x < SIZE_X && p.y >= 0 && p.y < SIZE_Y;
     }
