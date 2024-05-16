@@ -146,12 +146,13 @@ public class MF extends JFrame implements Observer {
     }
 
     private void loadImages() {
-        Mur = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Mur.png");
-        Vide = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Sol.png");
-        Heros = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Heros.png");
-        Bloc = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Bloc.png");
-        Arrivee = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Arrivee.png");
-        Favicon = new ImageIcon("C:\\Users\\Tom\\Documents\\Polytech\\Semestre_6\\Projet_Tuto\\Sokoban\\src\\assets\\Favicon.png");
+        String path = "src/assets/";
+        Mur = new ImageIcon(path+"Mur.png");
+        Vide = new ImageIcon(path+"Sol.png");
+        Heros = new ImageIcon(path+"Heros.png");
+        Bloc = new ImageIcon(path+"Bloc.png");
+        Arrivee = new ImageIcon(path+"Arrivee.png");
+        Favicon = new ImageIcon(path+"Favicon.png");
     }
     
 }
