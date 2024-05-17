@@ -16,12 +16,12 @@ public class Jeu extends Observable {
     public int SIZE_X = 10;
     public int SIZE_Y = 10;
     public Case[][] tab;
-    private MF mf;
     public Bloc[][] tabB;
     public Bloc b;
 
     public void InitialisationNiveau(MF mf) {
 
+    
         // Réinitialiser les tableaux et les cartes
         tab = new Case[SIZE_X][SIZE_Y];
         map = new java.util.HashMap<>();

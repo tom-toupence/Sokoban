@@ -48,11 +48,16 @@ public class MF extends JFrame implements Observer {
         retryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearComponents();
                 jeu.InitialisationNiveau(MF.this);
+                System.out.println("Le jeu devrait être réinitialisé maintenant.");
+                MF.this.build();
             }
         });
 
         add(jp);
+
+
         for (int i = 0; i < jeu.SIZE_X; i++) {
             for (int j = 0; j < jeu.SIZE_Y; j++) {
                 tabC[i][j] = new JPanel(new BorderLayout());
@@ -80,6 +85,8 @@ public class MF extends JFrame implements Observer {
         }
     }
 
+
+
     public void addEC() {
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
@@ -101,6 +108,9 @@ public class MF extends JFrame implements Observer {
         });
         this.setFocusable(true); 
     }
+
+
+    
 
     @Override
     public void update(Observable o, Object arg) {
@@ -136,13 +146,29 @@ public class MF extends JFrame implements Observer {
                     if (response == JOptionPane.NO_OPTION) {
                         System.exit(0);
                     } else {    
-                        jeu.InitialisationNiveau(MF.this);
+                        dispose();
+                        Menu menu = new Menu();
                     }
                 });
             }
             revalidate();
             repaint();
         }
+    }
+
+
+
+
+    public void clearComponents() {
+        for (int i = 0; i < jeu.SIZE_X; i++) {
+            for (int j = 0; j < jeu.SIZE_Y; j++) {
+                if (tabC[i][j] != null) {
+                    tabC[i][j].removeAll();
+                }
+            }
+        }
+        revalidate();
+        repaint();
     }
 
     private void loadImages() {
