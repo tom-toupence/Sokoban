@@ -2,9 +2,8 @@ package Model;
 
 import java.util.Observable;
 
-
+@SuppressWarnings("deprecation")
 public class Entite extends Observable {
-
     Jeu jeu;
     Case c;
 
@@ -12,7 +11,6 @@ public class Entite extends Observable {
         this.jeu = _jeu;
         c = _c;
         c.setEntite(this);
-
     }
 
     public boolean seDeplacerVers(Case c,Direction d){
@@ -42,5 +40,4 @@ public class Entite extends Observable {
     public boolean pousser(Direction d){
         return false;
     }
-
 }

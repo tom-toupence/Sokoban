@@ -12,7 +12,6 @@ public class Bloc extends Entite {
         return new Point(c.x, c.y);
     }
 
-
     public boolean pousser(Direction d){
         return this.deplacerEntite(this.jeu, d);
     }

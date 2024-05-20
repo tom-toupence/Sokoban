@@ -1,24 +1,16 @@
 package Model;
-
-import Vue_controlleur.MF;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Observable;
-import java.util.Observer;
 @SuppressWarnings("deprecation")
 
 public class Case extends Observable {
     public int y;
     public int x;
-
     Entite entite;
 
     public Case(int x, int y) {
         this.x = x;
         this.y = y;
     }
-
 
     public int getY() {
         return y;
@@ -27,7 +19,6 @@ public class Case extends Observable {
     public int getX() {
         return x;
     }
-
 
     public boolean entrer(Entite e, Direction d, Case c) {
         return true;
@@ -41,5 +32,4 @@ public class Case extends Observable {
         entite = e;
         return entite;
     }
-
 }

@@ -1,16 +1,9 @@
 package Model;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-@SuppressWarnings("deprecation")
 public class Heros extends Entite  {
-
     public int y;
     public int x;
-    private List<Observer> observers = new ArrayList<>();
 
     public Heros(Jeu jeu, Case c){
         super(jeu, c);
@@ -29,14 +22,12 @@ public class Heros extends Entite  {
     public Point getPosition() {
         return new Point(x, y);
     }
-    
 
     @Override
     public boolean seDeplacerVers(Case c, Direction d){
         if(c instanceof Mur){
             return false;
         }
-
         if(c instanceof Vide || c instanceof Arrivee){
             if(c.getEntite() instanceof Bloc || c.getEntite() instanceof Caisse){
                 if(c.getEntite().pousser(d) == false){
@@ -47,8 +38,6 @@ public class Heros extends Entite  {
             this.setCase(c);
             this.x = c.getX();
             this.y = c.getY();
-            return true;
-           
         }
         return true;
     }  

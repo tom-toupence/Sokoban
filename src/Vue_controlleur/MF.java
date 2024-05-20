@@ -2,7 +2,6 @@ package Vue_controlleur;
 
 import Model.*;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Observable;
@@ -63,10 +62,9 @@ public class MF extends JFrame implements Observer {
                 ;
             }
         });
-
         add(jp);
 
-
+        // Ajout des composants
         for (int i = 0; i < jeu.SIZE_X; i++) {
             for (int j = 0; j < jeu.SIZE_Y; j++) {
                 tabC[i][j] = new JPanel(new BorderLayout());
@@ -97,8 +95,6 @@ public class MF extends JFrame implements Observer {
         }
     }
 
-
-
     public void addEC() {
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
@@ -120,9 +116,6 @@ public class MF extends JFrame implements Observer {
         });
         this.setFocusable(true); 
     }
-
-
-    
 
     @Override
     public void update(Observable o, Object arg) {
@@ -175,9 +168,6 @@ public class MF extends JFrame implements Observer {
         }
     }
 
-
-
-
     public void clearComponents() {
         for (int i = 0; i < jeu.SIZE_X; i++) {
             for (int j = 0; j < jeu.SIZE_Y; j++) {
@@ -200,5 +190,4 @@ public class MF extends JFrame implements Observer {
         Arrivee = new ImageIcon(path+"Arrivee.png");
         Favicon = new ImageIcon(path+"Favicon.png");
     }
-    
 }
