@@ -95,6 +95,9 @@ public class MF extends JFrame implements Observer {
         }
     }
 
+    /**
+     * Ajoute un écouteur de clavier pour les déplacements du héros
+     */
     public void addEC() {
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
@@ -180,6 +183,9 @@ public class MF extends JFrame implements Observer {
         repaint();
     }
 
+    /**
+     * Charge les images du jeu
+     */
     private void loadImages() {
         String path = "src/assets/";
         Mur = new ImageIcon(path+"Mur.png");

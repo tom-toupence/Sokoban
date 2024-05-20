@@ -20,6 +20,13 @@ public class Case extends Observable {
         return x;
     }
 
+    /**
+     * Permet de savoir si l'entite peut entrer dans la case
+     * @param e l'entite qui veut entrer
+     * @param d la direction dans laquelle l'entite veut entrer
+     * @param c la case dans laquelle l'entite veut entrer
+     * @return true si l'entite peut entrer dans la case, false sinon
+     */
     public boolean entrer(Entite e, Direction d, Case c) {
         return true;
     }

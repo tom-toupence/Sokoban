@@ -13,7 +13,13 @@ public class Entite extends Observable {
         c.setEntite(this);
     }
 
-    public boolean seDeplacerVers(Case c,Direction d){
+    /**
+     * Permet de se déplacer vers une case
+     * @param c la case vers laquelle on veut se déplacer
+     * @param d la direction dans laquelle on veut se déplacer
+     * @return true si le déplacement a été effectué, false sinon
+     */
+    public boolean seDeplacerVers(Case c, Direction d){
         Entite e = c.getEntite();
         if(e!=null){
             e.pousser(d);
@@ -21,6 +27,9 @@ public class Entite extends Observable {
         return true;
     }
 
+    /**
+     * Permet de quitter la case actuelle
+     */
     public void quitterCase(){
         c=null;
     }
@@ -37,6 +46,11 @@ public class Entite extends Observable {
         c = _c;
     }
 
+    /**
+     * Permet de pousser une entité
+     * @param d la direction dans laquelle on veut pousser l'entité
+     * @return true si l'entité a été poussée, false sinon
+     */
     public boolean pousser(Direction d){
         return false;
     }

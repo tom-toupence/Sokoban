@@ -17,6 +17,11 @@ public class Jeu extends Observable {
     public Bloc b;
     public Caisse[] caisses = new Caisse[0];
 
+    /**
+     * Méthode pour initialiser le niveau
+     * @param mf : la fenêtre principale
+     * @return true si le niveau est initialisé, false sinon
+     */
     public boolean InitialisationNiveau(MF mf) {
         BufferedReader lecteur = null;
         String ligne;
@@ -95,10 +100,6 @@ public class Jeu extends Observable {
         }
     } 
 
-    /**
-     * Méthode pour déplacer le héros
-     * @param d
-     */
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
         h.seDeplacerVers(cCible,d);
@@ -107,10 +108,10 @@ public class Jeu extends Observable {
     }
 
     /**
-     * Méthode pour réinitialiser le jeu
-     * @param c
-     * @param x
-     * @param y
+     * Méthode pour ajouter une case à la grille
+     * @param c : la case à ajouter
+     * @param x : la position x
+     * @param y : la position y
      */
     private void addCase(Case c, int x, int y){
         tab[x][y] = c;
@@ -119,8 +120,8 @@ public class Jeu extends Observable {
 
     /**
      * Méthode pour vérifier si un point est dans la grille
-     * @param p
-     * @return
+     * @param p : le point à vérifier
+     * @return true si le point est dans la grille, false sinon
      */
     private boolean contenuDansGrille(Point p){
         return p.x >= 0 && p.x < SIZE_X && p.y >= 0 && p.y < SIZE_Y;
