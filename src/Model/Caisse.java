@@ -2,9 +2,9 @@ package Model;
 
 import java.awt.Point;
 
-public class Bloc extends Entite {
+public class Caisse extends Entite {
 
-    public Bloc(Jeu _jeu, Case c){
+    public Caisse(Jeu _jeu, Case c){
         super(_jeu,c);
     }
 

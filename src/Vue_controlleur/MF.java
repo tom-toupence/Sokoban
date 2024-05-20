@@ -11,7 +11,7 @@ import java.util.Observer;
 @SuppressWarnings("deprecation")
 public class MF extends JFrame implements Observer {
     JPanel[][] tabC;    
-    ImageIcon Mur, Vide, Heros, Bloc, Arrivee, Favicon;
+    ImageIcon Mur, Vide, Heros, Bloc, Caisse, Arrivee, Favicon;
     public Jeu jeu;
     public String level;
     public boolean initialized = false;
@@ -80,8 +80,11 @@ public class MF extends JFrame implements Observer {
                     tabC[x][y].add(new JLabel(Mur), BorderLayout.CENTER);
                 } else if (jeu.tab[x][y] instanceof Vide) {
                     tabC[x][y].add(new JLabel(Vide), BorderLayout.CENTER);
-                    if (jeu.tab[x][y].getEntite() != null) {
-                        tabC[x][y].add(new JLabel(Bloc), BorderLayout.CENTER);
+                    if (jeu.tab[x][y].getEntite() != null){                       
+                        if (jeu.tab[x][y].getEntite() instanceof Bloc)
+                            tabC[x][y].add(new JLabel(Bloc), BorderLayout.CENTER);
+                        else if (jeu.tab[x][y].getEntite() instanceof Caisse)
+                            tabC[x][y].add(new JLabel(Caisse), BorderLayout.CENTER);
                     }
                 } else if (jeu.tab[x][y] instanceof Arrivee) {
                     tabC[x][y].add(new JLabel(Arrivee), BorderLayout.CENTER);
@@ -136,14 +139,21 @@ public class MF extends JFrame implements Observer {
             }
         }
 
-        
+        // Ajout de l'entité Heros
         Point positionHeros = jeu.h.getPosition();
         if (positionHeros != null) {
             tabC[positionHeros.x][positionHeros.y].add(new JLabel(Heros), 0);
         }
 
-
+        // Ajout des entités Caisse
+        for (Caisse c : jeu.caisses) {
+            Point positionCaisse = c.getPosition();
+            if (positionCaisse != null) {
+                tabC[positionCaisse.x][positionCaisse.y].add(new JLabel(Caisse), 0);
+            }
+        }
         
+        // Ajout de l'entité Bloc
         Point positionBloc = jeu.b.getPosition();
         if (positionBloc != null) {
             JLabel blocLabel = new JLabel(Bloc, SwingConstants.CENTER);
@@ -186,6 +196,7 @@ public class MF extends JFrame implements Observer {
         Vide = new ImageIcon(path+"Sol.png");
         Heros = new ImageIcon(path+"Heros.png");
         Bloc = new ImageIcon(path+"Bloc.png");
+        Caisse = new ImageIcon(path+"Caisse.png");
         Arrivee = new ImageIcon(path+"Arrivee.png");
         Favicon = new ImageIcon(path+"Favicon.png");
     }

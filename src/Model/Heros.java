@@ -38,7 +38,7 @@ public class Heros extends Entite  {
         }
 
         if(c instanceof Vide || c instanceof Arrivee){
-            if(c.getEntite() instanceof Bloc){
+            if(c.getEntite() instanceof Bloc || c.getEntite() instanceof Caisse){
                 if(c.getEntite().pousser(d) == false){
                     return false;
                 }

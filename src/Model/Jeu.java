@@ -21,6 +21,7 @@ public class Jeu extends Observable {
     public int SIZE_Y;
     public Case[][] tab;
     public Bloc b;
+    public Caisse[] caisses = new Caisse[0];
 
     public boolean InitialisationNiveau(MF mf) {
         // Réinitialiser les tableaux et les cartes
@@ -63,7 +64,13 @@ public class Jeu extends Observable {
                             addCase(new Vide(x, y), x, y);
                             b = new Bloc(this, tab[x][y]);
                             break;
-                        default: // case 'V' ou autre
+                        case 'C':
+                            addCase(new Vide(x, y), x, y);
+                            Caisse ca = new Caisse(this, tab[x][y]);
+                            caisses = java.util.Arrays.copyOf(caisses, caisses.length+1);
+                            caisses[caisses.length-1] = ca;
+                            break;
+                        default: // cas vide
                             addCase(new Vide(x, y), x, y);
                             break;
                     }
