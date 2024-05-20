@@ -13,14 +13,15 @@ public class MF extends JFrame implements Observer {
     JPanel[][] tabC;    
     ImageIcon Mur, Vide, Heros, Bloc, Arrivee, Favicon;
     public Jeu jeu;
-    public int level;
+    public String level;
+    public boolean initialized = false;
 
-    public MF(int level) {
+    public MF(String level) {
         tabC = new JPanel[20][20];
         this.level = level;
         loadImages();
         jeu = new Jeu();
-        jeu.InitialisationNiveau(this); // CHANGE NUMBER
+        initialized = jeu.InitialisationNiveau(this);
         addEC();
     }
 
@@ -52,9 +53,14 @@ public class MF extends JFrame implements Observer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 clearComponents();
-                jeu.InitialisationNiveau(MF.this);
-                System.out.println("Le jeu devrait être réinitialisé maintenant.");
-                MF.this.build();
+                initialized = jeu.InitialisationNiveau(MF.this);
+                if (initialized){
+                    System.out.println("Le jeu devrait être réinitialisé maintenant.");
+                    MF.this.build();
+                }else{
+                    System.out.println("Erreur lors de la réinitialisation du jeu.");
+                }
+                ;
             }
         });
 

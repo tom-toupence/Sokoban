@@ -4,6 +4,7 @@
     import javax.swing.border.EmptyBorder;
     import java.awt.*;
     import java.awt.event.*;
+import java.io.File;
 
     public class Menu extends JFrame{
 
@@ -26,10 +27,21 @@
             panel.add(background, BorderLayout.CENTER);
 
             
-            // Panneau de bouttons
+            // Panneau de boutons
             JPanel buttonPanel = new JPanel();
+            // récupération niveaux disponibles
+            File levelFolder = new File("src/assets/Levels");
+            File[] leverlList = levelFolder.listFiles();
+            String[] levels = new String[leverlList.length];
+            for (int i = 0; i < leverlList.length; i++) {
+                levels[i] = leverlList[i].getName().replace(".txt", "");
+            }
+            JComboBox<String> levelList = new JComboBox<>(levels);
+            levelList.setSelectedIndex(0);
+
             JButton playButton = new JButton("Jouer");
             JButton quitButton = new JButton("Quitter");
+            buttonPanel.add(levelList);
             buttonPanel.add(playButton);
             buttonPanel.add(quitButton);
             buttonPanel.setOpaque(false);
@@ -39,9 +51,16 @@
             playButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    MF mf = new MF(1); // CHANGE NUMBER
-                    mf.setVisible(true);
-                    setVisible(false);
+                    // récupérer le niveau choisi
+                    MF mf = new MF((String) levelList.getSelectedItem());
+                    if (mf.initialized) {
+                        mf.setVisible(true);
+                        setVisible(false);
+                    } else {
+                        // afficher un message d'erreur
+                        JOptionPane.showMessageDialog(null, "Vérifiez que le fichier est correctement écrit avant de relancer.", "Échec lors de la génération du niveau", JOptionPane.ERROR_MESSAGE);
+                    }
+                   
                 }
             });
 

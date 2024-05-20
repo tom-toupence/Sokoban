@@ -17,19 +17,13 @@ import Vue_controlleur.MF;
 public class Jeu extends Observable {
     private Map<Case, Point> map;
     public Heros h;
-    public int SIZE_X = 10;
-    public int SIZE_Y = 10;
+    public int SIZE_X;
+    public int SIZE_Y;
     public Case[][] tab;
-    public Bloc[][] tabB;
     public Bloc b;
 
-    public void InitialisationNiveau(MF mf) {
+    public boolean InitialisationNiveau(MF mf) {
         // Réinitialiser les tableaux et les cartes
-        tab = new Case[SIZE_X][SIZE_Y];
-        map = new java.util.HashMap<>();
-        tabB = new Bloc[SIZE_X][SIZE_Y];
-
-        this.addObserver(mf);
 
         // lire le fichier pour initialiser le niveau
         BufferedReader lecteur = null;
@@ -41,8 +35,14 @@ public class Jeu extends Observable {
             System.out.println("Erreur d'ouverture du fichier");
         }
         try {
-            // première ligne : taille de la grille
-            int taille = Integer.parseInt(lecteur.readLine());
+            // premières lignes : taille de la grille
+            SIZE_X = Integer.parseInt(lecteur.readLine());
+            SIZE_Y = Integer.parseInt(lecteur.readLine());
+            
+            tab = new Case[SIZE_X][SIZE_Y];
+            map = new java.util.HashMap<>();
+            this.addObserver(mf);
+
             // autres lignes : contenu de la grille
             int x = 0;
             while ((ligne = lecteur.readLine()) != null) {
@@ -75,35 +75,20 @@ public class Jeu extends Observable {
                 lecteur.close();
         } catch (IOException e) {
             // TODO MESSAGE ERREUR
-            e.printStackTrace();
+            System.out.println("erreur lecture fichier");
+            return false;
+            //e.printStackTrace();
+        } catch (java.lang.ArrayIndexOutOfBoundsException e){
+            System.out.println("trop sur une ligne");
+            return false;
+            //e.printStackTrace();
         }
-
-        /*
-        for (int i =0; i<10; i++){
-            addCase(new Mur(i,0), i, 0);
-            addCase(new Mur(i,9), i, 9);
-        }
-        for (int i =1; i<10; i++){
-            addCase(new Mur(0,i), 0, i);
-            addCase(new Mur(9,i), 9, i);
-        }
-
-        for (int x = 1; x<9; x++){
-            for (int y = 1; y<9; y++){
-                addCase(new Vide(x,y),x,y);
-            }
-        }        
-
-        addCase(new Arrivee(3,3), 3, 3);
-        h = new Heros(this, tab[4][4]);
-        b = new Bloc(this, tab[6][6]);
-        */
 
         mf.build();
         setChanged();
         notifyObservers();
 
-
+        return true;
     } 
 
     public Case getCible(Entite e, Direction d){
