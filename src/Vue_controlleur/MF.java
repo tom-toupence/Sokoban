@@ -8,16 +8,19 @@ import java.awt.event.*;
 import java.util.Observable;
 import java.util.Observer;
 
+@SuppressWarnings("deprecation")
 public class MF extends JFrame implements Observer {
     JPanel[][] tabC;    
     ImageIcon Mur, Vide, Heros, Bloc, Arrivee, Favicon;
     public Jeu jeu;
+    public int level;
 
-    public MF() {
+    public MF(int level) {
         tabC = new JPanel[20][20];
+        this.level = level;
         loadImages();
         jeu = new Jeu();
-        jeu.InitialisationNiveau(this);
+        jeu.InitialisationNiveau(this); // CHANGE NUMBER
         addEC();
     }
 

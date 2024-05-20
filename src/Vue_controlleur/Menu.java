@@ -39,7 +39,7 @@
             playButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    MF mf = new MF();
+                    MF mf = new MF(1); // CHANGE NUMBER
                     mf.setVisible(true);
                     setVisible(false);
                 }

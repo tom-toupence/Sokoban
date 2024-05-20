@@ -1,6 +1,10 @@
 package Model;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Observable;
 
@@ -20,16 +24,61 @@ public class Jeu extends Observable {
     public Bloc b;
 
     public void InitialisationNiveau(MF mf) {
-
-    
         // Réinitialiser les tableaux et les cartes
         tab = new Case[SIZE_X][SIZE_Y];
         map = new java.util.HashMap<>();
         tabB = new Bloc[SIZE_X][SIZE_Y];
 
-
         this.addObserver(mf);
 
+        // lire le fichier pour initialiser le niveau
+        BufferedReader lecteur = null;
+        String ligne;
+        try
+        {
+            lecteur = new BufferedReader(new FileReader("src/assets/Levels/"+mf.level+".txt"));
+        } catch(FileNotFoundException exc) {
+            System.out.println("Erreur d'ouverture du fichier");
+        }
+        try {
+            // première ligne : taille de la grille
+            int taille = Integer.parseInt(lecteur.readLine());
+            // autres lignes : contenu de la grille
+            int x = 0;
+            while ((ligne = lecteur.readLine()) != null) {
+                int y = 0;
+                for (char c : ligne.toCharArray()) {
+                    switch (c) {
+                        case 'M':
+                            addCase(new Mur(x, y), x, y);
+                            break;
+                        case 'A':
+                            addCase(new Arrivee(x, y), x, y);
+                            break;
+                        case 'H':
+                            addCase(new Vide(x, y), x, y);
+                            h = new Heros(this, tab[x][y]);
+                            break;
+                        case 'B':
+                            addCase(new Vide(x, y), x, y);
+                            b = new Bloc(this, tab[x][y]);
+                            break;
+                        default: // case 'V' ou autre
+                            addCase(new Vide(x, y), x, y);
+                            break;
+                    }
+                    y++;
+                }
+                x++;
+            }
+                System.out.println(ligne);
+                lecteur.close();
+        } catch (IOException e) {
+            // TODO MESSAGE ERREUR
+            e.printStackTrace();
+        }
+
+        /*
         for (int i =0; i<10; i++){
             addCase(new Mur(i,0), i, 0);
             addCase(new Mur(i,9), i, 9);
@@ -48,6 +97,7 @@ public class Jeu extends Observable {
         addCase(new Arrivee(3,3), 3, 3);
         h = new Heros(this, tab[4][4]);
         b = new Bloc(this, tab[6][6]);
+        */
 
         mf.build();
         setChanged();
