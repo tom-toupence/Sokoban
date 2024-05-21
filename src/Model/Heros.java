@@ -1,30 +1,10 @@
 package Model;
-
-import java.awt.Point;
 public class Heros extends Entite  {
-    public int y;
-    public int x;
 
     public Heros(Jeu jeu, Case c){
         super(jeu, c);
         this.x = c.x;
         this.y = c.y;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public Point getPosition() {
-        return new Point(x, y);
-    }
-
-    public void quitterCase(Case c){
-        
     }
 
     @Override
@@ -46,10 +26,5 @@ public class Heros extends Entite  {
             return false;
         }  
         return true;
-    }
-
-    public void avancer(Case c, Direction d){
-        this.x = c.getX();
-        this.y = c.getY();
     }
 }

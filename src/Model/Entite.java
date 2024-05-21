@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.Observable;
+import java.awt.Point;
 
 @SuppressWarnings("deprecation")
 public class Entite extends Observable {
@@ -22,6 +23,11 @@ public class Entite extends Observable {
     public int getX() {
         return x;
     }
+
+    public Point getPosition() {
+        return new Point(c.x, c.y);
+    }
+
     /**
      * Permet de se déplacer vers une case
      * @param c la case vers laquelle on veut se déplacer
@@ -68,7 +74,8 @@ public class Entite extends Observable {
     }
 
     public void avancer(Case c, Direction d){
-        return;
+        this.x = c.getX();
+        this.y = c.getY();
     }
 
     public boolean glisser(Case c, Direction d){

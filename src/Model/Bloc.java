@@ -11,7 +11,6 @@ public class Bloc extends Entite {
     public Point getPosition() {
         return new Point(c.x, c.y);
     }
-
     
 }
 
