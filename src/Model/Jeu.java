@@ -16,7 +16,9 @@ public class Jeu extends Observable {
     public Case[][] tab;
     public Bloc b;
     public Caisse[] caisses = new Caisse[0];
+    public Bloc[] blocs = new Bloc[0];
     public Trou[] trous = new Trou[0];
+    public int nb_blocs = 0;
 
     /**
      * Méthode pour initialiser le niveau
@@ -54,6 +56,9 @@ public class Jeu extends Observable {
                         case 'B':
                             addCase(new Vide(x, y), x, y);
                             b = new Bloc(this, tab[x][y]);
+                            blocs = java.util.Arrays.copyOf(blocs, blocs.length+1);
+                            blocs[blocs.length-1] = b;
+                            nb_blocs++;
                             break;
                         case 'C':
                             addCase(new Vide(x, y), x, y);

@@ -14,6 +14,7 @@ public class MF extends JFrame implements Observer {
     public Jeu jeu;
     public String level;
     public boolean initialized = false;
+    int compteur = 0;
 
     public MF(String level) {
         tabC = new JPanel[20][20];
@@ -130,6 +131,13 @@ public class MF extends JFrame implements Observer {
                     tabC[x][y].add(new JLabel(Vide), BorderLayout.CENTER);
                 } else if (jeu.tab[x][y] instanceof Arrivee) {
                     tabC[x][y].add(new JLabel(Arrivee), BorderLayout.CENTER);
+                    if(jeu.tab[x][y].getEntite() instanceof Bloc){
+                        compteur++;
+                        jeu.tab[x][y] = null;
+                    }
+                    if(compteur == jeu.nb_blocs){
+                        WinCondition();
+                    }
                 } else if (jeu.tab[x][y] instanceof Fissure) {
                     tabC[x][y].add(new JLabel(Fissure), BorderLayout.CENTER);
                 } else if (jeu.tab[x][y] instanceof Trou) {
@@ -154,27 +162,38 @@ public class MF extends JFrame implements Observer {
             }
         }
         
-        // Ajout de l'entité Bloc
-        Point positionBloc = jeu.b.getPosition();
-        if (positionBloc != null) {
-            JLabel blocLabel = new JLabel(Bloc, SwingConstants.CENTER);
-            tabC[positionBloc.x][positionBloc.y].add(blocLabel,0);
-            if (jeu.tab[positionBloc.x][positionBloc.y] instanceof Arrivee) {
+
+        for(Bloc b : jeu.blocs){
+            Point positionBloc = b.getPosition();
+            if (positionBloc != null) {
+                tabC[positionBloc.x][positionBloc.y].add(new JLabel(Bloc), 0);
+                revalidate();
+                repaint();}
+    }
+
+        // // Ajout de l'entité Bloc
+        // Point positionBloc = jeu.b.getPosition();
+        // if (positionBloc != null) {
+        //     JLabel blocLabel = new JLabel(Bloc, SwingConstants.CENTER);
+        //     tabC[positionBloc.x][positionBloc.y].add(blocLabel,0);
+        //     revalidate();
+        //     repaint();
+        // }
+
+        }
+        public void WinCondition(){
                 SwingUtilities.invokeLater(() -> {
-                    JOptionPane.showMessageDialog(this, "Bravo vous avez gagné !","", JOptionPane.INFORMATION_MESSAGE);
-                    int response = JOptionPane.showConfirmDialog(this, "Voulez-vous rejouer ?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    if (response == JOptionPane.NO_OPTION) {
-                        System.exit(0);
-                    } else {    
+                    JOptionPane.showMessageDialog(this, "Bravo, vous avez gagné !", "Victoire", JOptionPane.INFORMATION_MESSAGE);
+                    int reponse =JOptionPane.showConfirmDialog(this, "Voulez-vous rejouer ?", "Rejouer", JOptionPane.YES_NO_OPTION);
+                    if(reponse == JOptionPane.YES_OPTION){
                         dispose();
-                        Menu menu = new Menu();
+                        Menu Relance = new Menu();
+                    } else {
+                        System.exit(0);
                     }
                 });
-            }
-            revalidate();
-            repaint();
-        }
-    }
+            
+         }
 
 
     /**
