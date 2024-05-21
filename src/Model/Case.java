@@ -25,10 +25,21 @@ public class Case extends Observable {
      * @param e l'entite qui veut entrer
      * @param d la direction dans laquelle l'entite veut entrer
      * @param c la case dans laquelle l'entite veut entrer
-     * @return true si l'entite peut entrer dans la case, false sinon
+     * @return true si l'entité peut entrer dans la case, false sinon
      */
     public boolean entrer(Entite e, Direction d, Case c) {
         return true;
+    }
+
+    /**
+     * État de la case après que l'entité ait quitté la case
+     * @param e l'entite qui veut quitter
+     * @param d la direction dans laquelle l'entite veut quitter
+     * @param c la case que l'entite veut quitter
+     * @return la case après que l'entité ait quitté la case
+     */
+    public Case apresQuitter(Entite e, Direction d, Case c) {
+        return this;
     }
 
     public Entite getEntite(){

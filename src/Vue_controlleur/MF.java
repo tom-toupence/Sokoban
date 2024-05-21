@@ -10,7 +10,7 @@ import java.util.Observer;
 @SuppressWarnings("deprecation")
 public class MF extends JFrame implements Observer {
     JPanel[][] tabC;    
-    ImageIcon Mur, Vide, Heros, Bloc, Caisse, Arrivee, Favicon;
+    ImageIcon Mur, Vide, Heros, Bloc, Caisse, Arrivee, Favicon, Fissure, Trou;
     public Jeu jeu;
     public String level;
     public boolean initialized = false;
@@ -85,6 +85,10 @@ public class MF extends JFrame implements Observer {
                     }
                 } else if (jeu.tab[x][y] instanceof Arrivee) {
                     tabC[x][y].add(new JLabel(Arrivee), BorderLayout.CENTER);
+                } else if (jeu.tab[x][y] instanceof Fissure) {
+                    tabC[x][y].add(new JLabel(Fissure), BorderLayout.CENTER);
+                } else if (jeu.tab[x][y] instanceof Trou) {
+                    tabC[x][y].add(new JLabel(Trou), BorderLayout.CENTER);
                 }
             }
         }
@@ -130,6 +134,10 @@ public class MF extends JFrame implements Observer {
                     tabC[x][y].add(new JLabel(Vide), BorderLayout.CENTER);
                 } else if (jeu.tab[x][y] instanceof Arrivee) {
                     tabC[x][y].add(new JLabel(Arrivee), BorderLayout.CENTER);
+                } else if (jeu.tab[x][y] instanceof Fissure) {
+                    tabC[x][y].add(new JLabel(Fissure), BorderLayout.CENTER);
+                } else if (jeu.tab[x][y] instanceof Trou) {
+                    tabC[x][y].add(new JLabel(Trou), BorderLayout.CENTER);
                 }
             }
         }
@@ -183,5 +191,7 @@ public class MF extends JFrame implements Observer {
         Caisse = new ImageIcon(path+"Caisse.png");
         Arrivee = new ImageIcon(path+"Arrivee.png");
         Favicon = new ImageIcon(path+"Favicon.png");
+        Fissure = new ImageIcon(path+"Fissure.png");
+        Trou = new ImageIcon(path+"Trou.png");
     }
 }
