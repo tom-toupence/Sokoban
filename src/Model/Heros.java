@@ -39,7 +39,7 @@ public class Heros extends Entite  {
             this.setCase(this.getCase().apresQuitter(this, d, c));
             c.quitterEntite(c, this);
             this.avancer(c, d);
-            if(c instanceof Glace){
+            if(c.glissant(c)){
                 return this.glisser(c, d);
             }
             
@@ -53,33 +53,3 @@ public class Heros extends Entite  {
         this.y = c.getY();
     }
 }
-
-
-
-
-
-  
-        /*
-         *         if(c.entrer(this, d, c)) {
-            if (c.getEntite() != null) {
-                if (c.getEntite().pousser(d)){
-                    c.setEntite(this);
-                    this.setCase(c);
-                    this.x = c.getX();
-                    this.y = c.getY();
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                c.setEntite(this);
-                this.setCase(c);
-                this.x = c.getX();
-                this.y = c.getY();
-                return true;
-            }
-        } else {
-            return false;
-        }
-
-         */

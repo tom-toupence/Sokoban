@@ -21,13 +21,8 @@ public class Bloc extends Entite {
         Case cCible = jeu.getCible(c.getEntite(), d);
         if (cCible.entrer(this, d, cCible)) {
             if(cCible.getEntite() instanceof Bloc || cCible.getEntite() instanceof Caisse){
-                if(cCible.glisser(cCible)){
-                    c.quitterEntite(cCible, this);
-                    cCible = jeu.getCibleGlissement(cCible, d);
-                    cCible.quitterEntite(cCible, this);
-                } else {
                 if(cCible.getEntite().pousser(d) == false){
-                    return false;}
+                    return false;
                 }
             }            
             c.quitterEntite(cCible, this);

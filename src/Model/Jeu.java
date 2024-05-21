@@ -113,26 +113,6 @@ public class Jeu extends Observable {
             return null;
         }
     } 
-
-    public Case getCibleGlissement(Case c, Direction d){
-        Point pCible = map.get(c);
-        int x = pCible.x;
-        int y = pCible.y;
-
-        switch(d) {
-            case UP:x--;x--;break;
-            case DOWN:x++;x++; break;
-            case LEFT: y--;y--; break;
-            case RIGHT:y++;y++; break;
-        }
-        Point p = new Point(x,y);
-        if (contenuDansGrille(p)) {
-            return tab[p.x][p.y];
-        } else {
-            return null;
-        }
-    }
-
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
         h.seDeplacerVers(cCible,d);
