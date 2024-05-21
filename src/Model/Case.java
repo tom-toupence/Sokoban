@@ -46,15 +46,8 @@ public class Case extends Observable {
         return entite;
     }
 
-
     public Entite setEntite(Entite e){
         entite = e;
         return entite;
-    }
-
-    public void sortirCase(Case cCible, Entite e){
-        this.setEntite(null);
-        cCible.setEntite(e);
-        e.setCase(cCible);
     }
 }
