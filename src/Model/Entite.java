@@ -64,7 +64,7 @@ public class Entite extends Observable {
      * @return true si l'entité a été poussée, false sinon
      */
     public boolean pousser(Direction d){
-        return false;
+        return this.deplacerEntite(this.jeu, d);
     }
 
     public void avancer(Case c, Direction d){
@@ -73,5 +73,20 @@ public class Entite extends Observable {
 
     public boolean glisser(Case c, Direction d){
         return(seDeplacerVers(jeu.getCible(c.getEntite(), d), d));
+    }
+
+    public boolean deplacerEntite(Jeu jeu, Direction d){
+        Case c = this.getCase();
+        Case cCible = jeu.getCible(c.getEntite(), d);
+        if (cCible.entrer(this, d, cCible)) {
+            if(cCible.getEntite() instanceof Bloc || cCible.getEntite() instanceof Caisse){
+                if(cCible.getEntite().pousser(d) == false){
+                    return false;
+                }
+            }            
+            c.quitterEntite(cCible, this);
+            return true;
+        }
+        return false;
     }
 }
