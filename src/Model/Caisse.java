@@ -25,9 +25,7 @@ public class Caisse extends Entite {
                     return false;
                 }
             }            
-            c.setEntite(null);
-            cCible.setEntite(this);
-            this.setCase(cCible);
+            c.sortirCase(cCible, c.getEntite());
             return true;
         }
         return false;

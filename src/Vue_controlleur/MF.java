@@ -26,8 +26,8 @@ public class MF extends JFrame implements Observer {
 
     public void build() {
         this.setTitle("Sokoban");
-        this.setSize(jeu.SIZE_X*64, jeu.SIZE_Y*64);
-        this.setLocation(400, 50);
+        this.setSize(jeu.SIZE_X*48, jeu.SIZE_Y*48+50);
+        this.setLocation(400,50);
         this.setIconImage(Favicon.getImage()) ;
 
         JPanel jp = new JPanel(new BorderLayout());
@@ -51,7 +51,6 @@ public class MF extends JFrame implements Observer {
         retryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clearComponents();
                 initialized = jeu.InitialisationNiveau(MF.this);
                 if (initialized){
                     System.out.println("Le jeu devrait être réinitialisé maintenant.");
@@ -171,17 +170,6 @@ public class MF extends JFrame implements Observer {
         }
     }
 
-    public void clearComponents() {
-        for (int i = 0; i < jeu.SIZE_X; i++) {
-            for (int j = 0; j < jeu.SIZE_Y; j++) {
-                if (tabC[i][j] != null) {
-                    tabC[i][j].removeAll();
-                }
-            }
-        }
-        revalidate();
-        repaint();
-    }
 
     /**
      * Charge les images du jeu

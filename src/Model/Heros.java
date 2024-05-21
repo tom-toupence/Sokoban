@@ -25,20 +25,24 @@ public class Heros extends Entite  {
 
     @Override
     public boolean seDeplacerVers(Case c, Direction d){
-        if(c instanceof Mur){
-            return false;
-        }
-        if(c instanceof Vide || c instanceof Arrivee){
+        if(c.entrer(c.getEntite(), d, c)){
             if(c.getEntite() instanceof Bloc || c.getEntite() instanceof Caisse){
                 if(c.getEntite().pousser(d) == false){
                     return false;
                 }
             }
-            c.setEntite(this);
-            this.setCase(c);
-            this.x = c.getX();
-            this.y = c.getY();
+        this.avancer(c);
+        } else {
+            return false;
         }
         return true;
     }  
+
+
+    public void avancer(Case c){
+        c.setEntite(this);
+        this.setCase(c);
+        this.x = c.getX();
+        this.y = c.getY();
+    }
 }
