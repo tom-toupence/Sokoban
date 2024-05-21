@@ -30,6 +30,9 @@ public class Entite extends Observable {
      */
     public boolean seDeplacerVers(Case c, Direction d){
         Entite e = c.getEntite();
+        if(c instanceof Glace){
+            return this.glisser(c, d);
+        }
         if(e!=null){
             e.pousser(d);
         }
@@ -66,5 +69,11 @@ public class Entite extends Observable {
 
     public void avancer(Case c, Direction d){
         return;
+    }
+
+    public boolean glisser(Case c, Direction d){
+        System.out.println("glisser");
+        return(seDeplacerVers(jeu.getCible(c.getEntite(), d), d));
+
     }
 }

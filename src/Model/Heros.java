@@ -38,13 +38,11 @@ public class Heros extends Entite  {
             // TODO: gérer quitter la case (fissure devient trou)
             this.setCase(this.getCase().apresQuitter(this, d, c));
             c.quitterEntite(c, this);
+            this.avancer(c, d);
             if(c instanceof Glace){
-                Case cGlace = jeu.getCibleGlissement(c, d);
-                cGlace.quitterEntite(cGlace, this);
-                this.avancer(cGlace, d);  
-            } else {
-                this.avancer(c, d);   
+                return this.glisser(c, d);
             }
+            
             return false;
         }  
         return true;
