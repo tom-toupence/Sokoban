@@ -10,13 +10,7 @@ public class Glace extends Case {
         return true;
     
     }
-
-    public void quitterEntite(Case cCible, Entite e){
-        this.setEntite(null);
-        cCible.setEntite(e);
-        e.setCase(cCible);
-    }
-
+    
     public boolean glissant(Case c){
         return true;
     }

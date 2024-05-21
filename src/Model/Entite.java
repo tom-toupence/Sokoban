@@ -45,23 +45,12 @@ public class Entite extends Observable {
         return true;
     }
 
-    /**
-     * Permet de quitter la case actuelle
-     */
-    public void quitterCase(){
-        c=null;
-    }
-
     public void setCase(Case _c){
         c = _c;
     }
 
     public Case getCase(){
         return c;
-    }
-
-    public void allerSurCase(Case _c){
-        c = _c;
     }
 
     /**
