@@ -16,6 +16,7 @@ public class Jeu extends Observable {
     public Case[][] tab;
     public Bloc b;
     public Caisse[] caisses = new Caisse[0];
+    public Trou[] trous = new Trou[0];
 
     /**
      * Méthode pour initialiser le niveau
@@ -59,6 +60,16 @@ public class Jeu extends Observable {
                             Caisse ca = new Caisse(this, tab[x][y]);
                             caisses = java.util.Arrays.copyOf(caisses, caisses.length+1);
                             caisses[caisses.length-1] = ca;
+                            break;
+                        case 'T':
+                            addCase(new Trou(x, y), x, y);
+                            /*
+                            Trou tr = new Trou(this, tab[x][y]);
+                            trous = java.util.Arrays.copyOf(trous, trous.length+1);
+                            trous[trous.length-1] = tr;*/
+                            break;
+                        case 'F':
+                            addCase(new Fissure(x, y), x, y);
                             break;
                         default: // cas vide
                             addCase(new Vide(x, y), x, y);
