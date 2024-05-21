@@ -114,7 +114,7 @@ public class Jeu extends Observable {
             case RIGHT:y++; break;
         }
         Point p = new Point(x,y);
-        if (contenuDansGrille(p)) {
+        if (contenuDansGrille(p) && tab[p.x][p.y] != null) {
             return tab[p.x][p.y];
         } else {
             return null;
@@ -122,7 +122,6 @@ public class Jeu extends Observable {
     } 
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
-        if (cCible == null) return; // Si jamais le bloc cible est arrivé, la case devient nulle
         h.seDeplacerVers(cCible,d);
         setChanged();
         notifyObservers();

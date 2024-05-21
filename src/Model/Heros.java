@@ -9,6 +9,7 @@ public class Heros extends Entite  {
 
     @Override
     public boolean seDeplacerVers(Case cCible, Direction d){
+        if(cCible != null){
         if(cCible.entrer(this, d, cCible)){
             if(cCible.getEntite() != null){
                 if(cCible.getEntite().pousser(d) == false){
@@ -23,8 +24,9 @@ public class Heros extends Entite  {
             this.avancer(cCible, d);
             
             
-            return false;
+            return true;
         }  
+    }
         return true;
     }
     
