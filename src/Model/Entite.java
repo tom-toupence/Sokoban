@@ -72,8 +72,6 @@ public class Entite extends Observable {
     }
 
     public boolean glisser(Case c, Direction d){
-        System.out.println("glisser");
         return(seDeplacerVers(jeu.getCible(c.getEntite(), d), d));
-
     }
 }
