@@ -10,7 +10,7 @@ public class Vide extends Case {
         return true;
     }
 
-    public boolean glisser(Case c){
+    public boolean glissant(Case c){
         return false;
     }
 }

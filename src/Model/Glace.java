@@ -17,7 +17,7 @@ public class Glace extends Case {
         e.setCase(cCible);
     }
 
-    public boolean glisser(Case c){
+    public boolean glissant(Case c){
         return true;
     }
 }

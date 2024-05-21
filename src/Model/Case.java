@@ -57,7 +57,7 @@ public class Case extends Observable {
         e.setCase(cCible);
     }
 
-    public boolean glisser(Case c){
+    public boolean glissant(Case c){
         return false;
     }
 }
