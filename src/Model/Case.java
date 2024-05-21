@@ -60,7 +60,7 @@ public class Case extends Observable {
             }
         }
     }
-    public boolean glissant(Case c){
+    public boolean glissant(){
         return false;
     }
 }

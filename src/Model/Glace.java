@@ -10,8 +10,8 @@ public class Glace extends Case {
         return true;
     
     }
-    
-    public boolean glissant(Case c){
+
+    public boolean glissant(){
         return true;
     }
 }
