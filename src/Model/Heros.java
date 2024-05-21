@@ -37,8 +37,7 @@ public class Heros extends Entite  {
             }
             // TODO: gérer quitter la case (fissure devient trou)
             this.setCase(this.getCase().apresQuitter(this, d, c));
-            c.setEntite(this);
-            this.setCase(c);
+            c.quitterEntite(c, this);
             this.x = c.getX();
             this.y = c.getY();       
         }

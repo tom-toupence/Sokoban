@@ -25,9 +25,7 @@ public class Bloc extends Entite {
                     return false;
                 }
             }            
-            c.setEntite(null);
-            cCible.setEntite(this);
-            this.setCase(cCible);
+            c.quitterEntite(cCible, this);
             return true;
         }
         return false;
