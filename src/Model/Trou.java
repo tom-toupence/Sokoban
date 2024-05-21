@@ -8,7 +8,7 @@ public class Trou extends Case {
     }
 
     public boolean entrer(Entite e, Direction d, Case c) {
-        if(e instanceof Bloc || e instanceof Caisse){
+        if(e != null){
             e.setCase(this);
             return true;
         }

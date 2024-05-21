@@ -51,12 +51,15 @@ public class Case extends Observable {
         return entite;
     }
 
-    public void quitterEntite(Case cCible, Entite e){
-        this.setEntite(null);
-        cCible.setEntite(e);
-        e.setCase(cCible);
+    public void quitterEntite(Case cCible, Direction d, Entite e){
+        if(cCible.entrer(e, d , cCible)){
+            if(cCible.getEntite() == null){
+                this.setEntite(null);
+                cCible.setEntite(e);
+                e.setCase(cCible);
+            }
+        }
     }
-
     public boolean glissant(Case c){
         return false;
     }

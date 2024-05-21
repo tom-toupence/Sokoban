@@ -8,23 +8,25 @@ public class Heros extends Entite  {
     }
 
     @Override
-    public boolean seDeplacerVers(Case c, Direction d){
-        if(c.entrer(this, d, c)){
-            if(c.getEntite() instanceof Bloc || c.getEntite() instanceof Caisse){
-                if(c.getEntite().pousser(d) == false){
+    public boolean seDeplacerVers(Case cCible, Direction d){
+        if(cCible.entrer(this, d, cCible)){
+            if(cCible.getEntite() != null){
+                if(cCible.getEntite().pousser(d) == false){
                     return false;
                 }
             }
             // TODO: gérer quitter la case (fissure devient trou)
-            this.setCase(this.getCase().apresQuitter(this, d, c));
-            c.quitterEntite(c, this);
-            this.avancer(c, d);
-            if(c.glissant(c)){
-                return this.glisser(c, d);
+            // this.setCase(this.getCase().apresQuitter(this, d, cCible));
+            if(cCible.glissant(cCible)){
+                return this.glisser(cCible, d);
             }
+            this.avancer(cCible, d);
+            
             
             return false;
         }  
         return true;
     }
+    
+
 }

@@ -36,9 +36,6 @@ public class Entite extends Observable {
      */
     public boolean seDeplacerVers(Case c, Direction d){
         Entite e = c.getEntite();
-        if(c instanceof Glace){
-            return this.glisser(c, d);
-        }
         if(e!=null){
             e.pousser(d);
         }
@@ -52,6 +49,8 @@ public class Entite extends Observable {
     public Case getCase(){
         return c;
     }
+
+    
 
     /**
      * Permet de pousser une entité
@@ -75,13 +74,10 @@ public class Entite extends Observable {
         Case c = this.getCase();
         Case cCible = jeu.getCible(c.getEntite(), d);
         if (cCible.entrer(this, d, cCible)) {
-            if(cCible.getEntite() instanceof Bloc || cCible.getEntite() instanceof Caisse){
-                if(cCible.getEntite().pousser(d) == false){
-                    return false;
-                }
-            }            
-            c.quitterEntite(cCible, this);
-            return true;
+            c.quitterEntite(cCible, d, c.getEntite());
+            if(cCible.getEntite() != null){
+                return true;
+            }       
         }
         return false;
     }

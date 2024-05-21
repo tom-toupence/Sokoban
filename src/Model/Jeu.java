@@ -122,7 +122,9 @@ public class Jeu extends Observable {
     } 
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
+        Case c = h.getCase();
         h.seDeplacerVers(cCible,d);
+        c.quitterEntite(cCible, d, h);
         setChanged();
         notifyObservers();
     }
