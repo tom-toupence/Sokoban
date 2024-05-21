@@ -10,7 +10,7 @@ import java.util.Observer;
 @SuppressWarnings("deprecation")
 public class MF extends JFrame implements Observer {
     JPanel[][] tabC;    
-    ImageIcon Mur, Vide, Heros, Bloc, Caisse, Arrivee, Favicon, Fissure, Trou;
+    ImageIcon Mur, Vide, Heros, Bloc, Caisse, Arrivee, Favicon, Fissure, Trou, Glace;
     public Jeu jeu;
     public String level;
     public boolean initialized = false;
@@ -89,8 +89,10 @@ public class MF extends JFrame implements Observer {
                     tabC[x][y].add(new JLabel(Fissure), BorderLayout.CENTER);
                 } else if (jeu.tab[x][y] instanceof Trou) {
                     tabC[x][y].add(new JLabel(Trou), BorderLayout.CENTER);
-                }
+                } else if (jeu.tab[x][y] instanceof Glace) {
+                    tabC[x][y].add(new JLabel(Glace), BorderLayout.CENTER);
             }
+        }
         }
         Point positionHeros = jeu.h.getPosition();
         if (positionHeros != null) {
@@ -138,8 +140,10 @@ public class MF extends JFrame implements Observer {
                     tabC[x][y].add(new JLabel(Fissure), BorderLayout.CENTER);
                 } else if (jeu.tab[x][y] instanceof Trou) {
                     tabC[x][y].add(new JLabel(Trou), BorderLayout.CENTER);
-                }
+                } else if (jeu.tab[x][y] instanceof Glace) {
+                    tabC[x][y].add(new JLabel(Glace), BorderLayout.CENTER);
             }
+        }
         }
 
         // Ajout de l'entité Heros
@@ -193,5 +197,6 @@ public class MF extends JFrame implements Observer {
         Favicon = new ImageIcon(path+"Favicon.png");
         Fissure = new ImageIcon(path+"Fissure.png");
         Trou = new ImageIcon(path+"Trou.png");
+        Glace = new ImageIcon(path+"Glace.png");
     }
 }

@@ -71,6 +71,9 @@ public class Jeu extends Observable {
                         case 'F':
                             addCase(new Fissure(x, y), x, y);
                             break;
+                        case 'G':
+                            addCase(new Glace(x, y), x, y);
+                            break;
                         default: // cas vide
                             addCase(new Vide(x, y), x, y);
                             break;
@@ -110,6 +113,25 @@ public class Jeu extends Observable {
             return null;
         }
     } 
+
+    public Case getCibleGlissement(Case c, Direction d){
+        Point pCible = map.get(c);
+        int x = pCible.x;
+        int y = pCible.y;
+
+        switch(d) {
+            case UP:x--;x--;break;
+            case DOWN:x++;x++; break;
+            case LEFT: y--;y--; break;
+            case RIGHT:y++;y++; break;
+        }
+        Point p = new Point(x,y);
+        if (contenuDansGrille(p)) {
+            return tab[p.x][p.y];
+        } else {
+            return null;
+        }
+    }
 
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);

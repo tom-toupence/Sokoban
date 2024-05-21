@@ -10,7 +10,4 @@ public class Mur extends Case {
         return false;
     }
 
-    public boolean deplacer(Entite e){
-        return true;
-    }
 }

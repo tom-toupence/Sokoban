@@ -38,11 +38,29 @@ public class Heros extends Entite  {
             // TODO: gérer quitter la case (fissure devient trou)
             this.setCase(this.getCase().apresQuitter(this, d, c));
             c.quitterEntite(c, this);
-            this.x = c.getX();
-            this.y = c.getY();       
-        }
-        return false;
-        
+            if(c instanceof Glace){
+                Case cGlace = jeu.getCibleGlissement(c, d);
+                cGlace.quitterEntite(cGlace, this);
+                this.avancer(cGlace, d);  
+            } else {
+                this.avancer(c, d);   
+            }
+            return false;
+        }  
+        return true;
+    }
+
+    public void avancer(Case c, Direction d){
+        this.x = c.getX();
+        this.y = c.getY();
+    }
+}
+
+
+
+
+
+  
         /*
          *         if(c.entrer(this, d, c)) {
             if (c.getEntite() != null) {
@@ -67,5 +85,3 @@ public class Heros extends Entite  {
         }
 
          */
-    }  
-}

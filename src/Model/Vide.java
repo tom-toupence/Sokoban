@@ -9,4 +9,8 @@ public class Vide extends Case {
     public boolean entrer(Entite e, Direction d, Case c) {
         return true;
     }
+
+    public boolean glisser(Case c){
+        return false;
+    }
 }

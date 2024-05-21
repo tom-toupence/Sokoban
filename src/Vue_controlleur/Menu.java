@@ -15,7 +15,7 @@ public class Menu extends JFrame{
         JPanel panel = new JPanel(new BorderLayout());
 
         // Panneau fond
-        JLabel background = new JLabel(new ImageIcon("src/assets/fond.jpg"));
+        JLabel background = new JLabel(new ImageIcon("src/assets/Fond.jpg"));
         JLabel titleLabel = new JLabel("SOKOBAN", SwingConstants.CENTER);
         titleLabel.setFont(new Font("COMIC SANS MS", Font.BOLD, 48));
         titleLabel.setForeground(Color.BLACK); 

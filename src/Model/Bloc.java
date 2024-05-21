@@ -19,10 +19,15 @@ public class Bloc extends Entite {
     public boolean deplacerEntite(Jeu jeu, Direction d){
         Case c = this.getCase();
         Case cCible = jeu.getCible(c.getEntite(), d);
-        if (cCible != null && cCible.entrer(this, d, cCible)) {
+        if (cCible.entrer(this, d, cCible)) {
             if(cCible.getEntite() instanceof Bloc || cCible.getEntite() instanceof Caisse){
+                if(cCible.glisser(cCible)){
+                    c.quitterEntite(cCible, this);
+                    cCible = jeu.getCibleGlissement(cCible, d);
+                    cCible.quitterEntite(cCible, this);
+                } else {
                 if(cCible.getEntite().pousser(d) == false){
-                    return false;
+                    return false;}
                 }
             }            
             c.quitterEntite(cCible, this);

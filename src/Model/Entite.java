@@ -6,6 +6,8 @@ import java.util.Observable;
 public class Entite extends Observable {
     Jeu jeu;
     Case c;
+    public int x;
+    public int y;
 
     public Entite(Jeu _jeu, Case _c) {
         this.jeu = _jeu;
@@ -13,6 +15,13 @@ public class Entite extends Observable {
         c.setEntite(this);
     }
 
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
+    }
     /**
      * Permet de se déplacer vers une case
      * @param c la case vers laquelle on veut se déplacer
@@ -53,5 +62,9 @@ public class Entite extends Observable {
      */
     public boolean pousser(Direction d){
         return false;
+    }
+
+    public void avancer(Case c, Direction d){
+        return;
     }
 }
