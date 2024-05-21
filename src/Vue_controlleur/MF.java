@@ -30,6 +30,7 @@ public class MF extends JFrame implements Observer {
         this.setSize(jeu.SIZE_X*48, jeu.SIZE_Y*48+50);
         this.setLocation(400,50);
         this.setIconImage(Favicon.getImage()) ;
+        
 
         JPanel jp = new JPanel(new BorderLayout());
         JPanel jpC = new JPanel(new GridLayout(jeu.SIZE_X, jeu.SIZE_Y));
@@ -146,6 +147,7 @@ public class MF extends JFrame implements Observer {
                     tabC[x][y].add(new JLabel(Glace), BorderLayout.CENTER);
             }
         }
+        
         }
 
         // Ajout de l'entité Heros
@@ -153,6 +155,8 @@ public class MF extends JFrame implements Observer {
         if (positionHeros != null) {
             tabC[positionHeros.x][positionHeros.y].add(new JLabel(Heros), 0);
         }
+        revalidate();
+        repaint();
 
         // Ajout des entités Caisse
         for (Caisse c : jeu.caisses) {
@@ -166,19 +170,11 @@ public class MF extends JFrame implements Observer {
         for(Bloc b : jeu.blocs){
             Point positionBloc = b.getPosition();
             if (positionBloc != null) {
-                tabC[positionBloc.x][positionBloc.y].add(new JLabel(Bloc), 0);
-                revalidate();
-                repaint();}
-    }
+                tabC[positionBloc.x][positionBloc.y].add(new JLabel(Bloc), 0);}
+            revalidate();
+            repaint();
+        }
 
-        // // Ajout de l'entité Bloc
-        // Point positionBloc = jeu.b.getPosition();
-        // if (positionBloc != null) {
-        //     JLabel blocLabel = new JLabel(Bloc, SwingConstants.CENTER);
-        //     tabC[positionBloc.x][positionBloc.y].add(blocLabel,0);
-        //     revalidate();
-        //     repaint();
-        // }
 
         }
         public void WinCondition(){

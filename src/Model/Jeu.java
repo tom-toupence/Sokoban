@@ -79,8 +79,10 @@ public class Jeu extends Observable {
                         case 'G':
                             addCase(new Glace(x, y), x, y);
                             break;
-                        default: // cas vide
+                        case 'V':
                             addCase(new Vide(x, y), x, y);
+                            break;  
+                        default: // cas où il y a du blanc
                             break;
                     }
                     y++;
