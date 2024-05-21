@@ -124,7 +124,7 @@ public class Jeu extends Observable {
         Case cCible = getCible(h,d);
         Case c = h.getCase();
         h.seDeplacerVers(cCible,d);
-        c.quitterEntite(cCible, d, h);
+        //c.quitterEntite(cCible, d, h);
         setChanged();
         notifyObservers();
     }

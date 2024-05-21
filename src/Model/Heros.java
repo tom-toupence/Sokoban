@@ -15,10 +15,9 @@ public class Heros extends Entite  {
                     return false;
                 }
             }
+            c.quitterEntite(cCible, d, this);
             // TODO: gérer quitter la case (fissure devient trou)
-            // this.setCase(this.getCase().apresQuitter(this, d, cCible));
             if(cCible.glissant()){
-                c.quitterEntite(cCible, d, this);
                 return this.glisser(cCible, d);
             }
             this.avancer(cCible, d);
