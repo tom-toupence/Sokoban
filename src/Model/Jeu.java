@@ -122,9 +122,8 @@ public class Jeu extends Observable {
     } 
     public void deplacerHeros(Direction d){
         Case cCible = getCible(h,d);
-        Case c = h.getCase();
+        if (cCible == null) return; // Si jamais le bloc cible est arrivé, la case devient nulle
         h.seDeplacerVers(cCible,d);
-        //c.quitterEntite(cCible, d, h);
         setChanged();
         notifyObservers();
     }
