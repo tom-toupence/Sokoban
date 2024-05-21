@@ -35,30 +35,24 @@ public class MF extends JFrame implements Observer {
         jp.add(jpC, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
-        JButton quitButton = new JButton("Quitter");
-        JButton retryButton = new JButton("Réessayer");
-        buttonPanel.add(retryButton);
-        buttonPanel.add(quitButton);
+        JButton quitterBouton = new JButton("Quitter");
+        JButton menuBouton = new JButton("Menu principal");
+        buttonPanel.add(menuBouton);
+        buttonPanel.add(quitterBouton);
         jp.add(buttonPanel, BorderLayout.SOUTH);
 
-        quitButton.addActionListener(new ActionListener() {
+        quitterBouton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
 
-        retryButton.addActionListener(new ActionListener() {
+        menuBouton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                initialized = jeu.InitialisationNiveau(MF.this);
-                if (initialized){
-                    System.out.println("Le jeu devrait être réinitialisé maintenant.");
-                    MF.this.build();
-                }else{
-                    System.out.println("Erreur lors de la réinitialisation du jeu.");
-                }
-                ;
+                dispose();
+                Menu menu = new Menu();
             }
         });
         add(jp);
