@@ -70,6 +70,13 @@ public class Entite extends Observable {
         return(seDeplacerVers(jeu.getCible(c.getEntite(), d), d));
     }
 
+
+    /**
+     * Permet de déplacer une entité d'une case à sa case cible
+     * @param jeu le jeu dans lequel on déplace l'entité
+     * @param d la direction dans laquelle on veut déplacer l'entité
+     * @return true si l'entité a été déplacée, false sinon
+     */
     public boolean deplacerEntite(Jeu jeu, Direction d){
         Case c = this.getCase();
         Case cCible = jeu.getCible(c.getEntite(), d);
