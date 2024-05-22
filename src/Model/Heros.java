@@ -10,20 +10,20 @@ public class Heros extends Entite  {
     @Override
     public boolean seDeplacerVers(Case cCible, Direction d){
         if(cCible != null){
-        if(cCible.entrer(this, d, cCible)){
-            if(cCible.getEntite() != null){
-                if(cCible.getEntite().pousser(d) == false){
-                    return false;
+            if(cCible.entrer(this, d, cCible)){
+                if(cCible.getEntite() != null){
+                    if(cCible.getEntite().pousser(d) == false){
+                        return false;
+                    }
                 }
-            }
-            c.quitterEntite(cCible, d, this);
-            if(cCible.glissant()){
-                return this.glisser(cCible, d);
-            }
-            this.avancer(cCible, d);          
-            return true;
-        }  
-    }
+                c.quitterEntite(cCible, d, this);
+                if(cCible.glissant()){
+                    return this.glisser(cCible, d);
+                }
+                this.avancer(cCible, d);          
+                return true;
+            }  
+        }
         return true;
     }
     

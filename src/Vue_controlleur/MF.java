@@ -90,11 +90,7 @@ public class MF extends JFrame implements Observer {
                     tabC[x][y].add(new JLabel(Glace), BorderLayout.CENTER);
             }
         }
-        }
-        Point positionHeros = jeu.h.getPosition();
-        if (positionHeros != null) {
-            tabC[positionHeros.x][positionHeros.y].add(new JLabel(Heros), BorderLayout.CENTER);
-        }
+     }
     }
 
     /**
@@ -178,6 +174,10 @@ public class MF extends JFrame implements Observer {
         repaint();
         
         }
+
+        /**
+         * Condition de victoire
+         */
         public void WinCondition(){
                 SwingUtilities.invokeLater(() -> {
                     JOptionPane.showMessageDialog(this, "Bravo, vous avez gagné !", "Victoire", JOptionPane.INFORMATION_MESSAGE);
