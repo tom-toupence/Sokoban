@@ -136,7 +136,7 @@ public class Jeu extends Observable {
      * @param x : la position x
      * @param y : la position y
      */
-    private void addCase(Case c, int x, int y){
+    public void addCase(Case c, int x, int y){
         tab[x][y] = c;
         map.put(c, new Point(x,y));
     }
