@@ -16,6 +16,8 @@ public class MF extends JFrame implements Observer {
     public boolean initialized = false;
     int compteur = 0;
     int nb_pas = -1;
+    long startime;
+    long endtime;
 
     public MF(String level) {
         tabC = new JPanel[20][20];
@@ -91,7 +93,10 @@ public class MF extends JFrame implements Observer {
                     tabC[x][y].add(new JLabel(Glace), BorderLayout.CENTER);
             }
         }
+        startime = System.currentTimeMillis();
      }
+
+
     }
 
     /**
@@ -187,7 +192,8 @@ public class MF extends JFrame implements Observer {
          */
         public void WinCondition(){
                 SwingUtilities.invokeLater(() -> {
-                    JOptionPane.showMessageDialog(this, "Bravo, vous avez gagné en faisant " + nb_pas + " pas !", "Victoire", JOptionPane.INFORMATION_MESSAGE);
+                    long endtime = System.currentTimeMillis();
+                    JOptionPane.showMessageDialog(this, "Bravo, vous avez gagné en "+ (endtime - startime)/1000.0  + " secondes en faisant " + nb_pas + " pas !", "Victoire", JOptionPane.INFORMATION_MESSAGE);
                     int reponse =JOptionPane.showConfirmDialog(this, "Voulez-vous rejouer ?", "Rejouer", JOptionPane.YES_NO_OPTION);
                     if(reponse == JOptionPane.YES_OPTION){
                         dispose();
