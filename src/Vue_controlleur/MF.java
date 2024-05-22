@@ -155,8 +155,7 @@ public class MF extends JFrame implements Observer {
         if (positionHeros != null) {
             tabC[positionHeros.x][positionHeros.y].add(new JLabel(Heros), 0);
         }
-        revalidate();
-        repaint();
+
 
         // Ajout des entités Caisse
         for (Caisse c : jeu.caisses) {
@@ -166,16 +165,17 @@ public class MF extends JFrame implements Observer {
             }
         }
         
-
+        // Ajout des entités Bloc
         for(Bloc b : jeu.blocs){
             Point positionBloc = b.getPosition();
             if (positionBloc != null) {
                 tabC[positionBloc.x][positionBloc.y].add(new JLabel(Bloc), 0);}
-            revalidate();
-            repaint();
+            
         }
 
-
+        revalidate();
+        repaint();
+        
         }
         public void WinCondition(){
                 SwingUtilities.invokeLater(() -> {
