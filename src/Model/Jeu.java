@@ -33,6 +33,10 @@ public class Jeu extends Observable {
             // premières lignes : taille de la grille
             SIZE_X = Integer.parseInt(lecteur.readLine());
             SIZE_Y = Integer.parseInt(lecteur.readLine());
+            if (SIZE_X>20 || SIZE_Y>20) {
+                lecteur.close();
+                return false;
+            }
             tab = new Case[SIZE_X][SIZE_Y];
             map = new java.util.HashMap<>();
             this.addObserver(mf);
@@ -89,8 +93,7 @@ public class Jeu extends Observable {
                 }
                 x++;
             }
-                System.out.println(ligne);
-                lecteur.close();
+            lecteur.close();
         } catch (Exception e) {
             // erreur de lecture du fichier
             return false;
