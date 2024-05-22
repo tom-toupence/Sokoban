@@ -15,6 +15,7 @@ public class MF extends JFrame implements Observer {
     public String level;
     public boolean initialized = false;
     int compteur = 0;
+    int nb_pas = -1;
 
     public MF(String level) {
         tabC = new JPanel[20][20];
@@ -120,6 +121,12 @@ public class MF extends JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+
+        nb_pas++;
+        this.setTitle(level + " - pas : " + nb_pas);
+        
+
+
         for (int x = 0; x < jeu.SIZE_X; x++) {
             for (int y = 0; y < jeu.SIZE_Y; y++) {
                 tabC[x][y].removeAll(); 
@@ -180,7 +187,7 @@ public class MF extends JFrame implements Observer {
          */
         public void WinCondition(){
                 SwingUtilities.invokeLater(() -> {
-                    JOptionPane.showMessageDialog(this, "Bravo, vous avez gagné !", "Victoire", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Bravo, vous avez gagné en faisant " + nb_pas + " pas !", "Victoire", JOptionPane.INFORMATION_MESSAGE);
                     int reponse =JOptionPane.showConfirmDialog(this, "Voulez-vous rejouer ?", "Rejouer", JOptionPane.YES_NO_OPTION);
                     if(reponse == JOptionPane.YES_OPTION){
                         dispose();
