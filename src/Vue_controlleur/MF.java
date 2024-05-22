@@ -54,6 +54,7 @@ public class MF extends JFrame implements Observer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                @SuppressWarnings("unused")
                 Menu menu = new Menu();
             }
         });
@@ -183,6 +184,7 @@ public class MF extends JFrame implements Observer {
                     int reponse =JOptionPane.showConfirmDialog(this, "Voulez-vous rejouer ?", "Rejouer", JOptionPane.YES_NO_OPTION);
                     if(reponse == JOptionPane.YES_OPTION){
                         dispose();
+                        @SuppressWarnings("unused")
                         Menu Relance = new Menu();
                     } else {
                         System.exit(0);
