@@ -18,7 +18,7 @@ public class Fissure extends Case {
     }
 
     public void quitterEntite(Case cCible, Direction d, Entite e){
-        e.jeu.addCase(new Trou(this.x, this.y), this.x, this.y);
+        
         if(cCible.entrer(e, d , cCible)){
             if(cCible.getEntite() == null){
                 this.setEntite(null);
@@ -26,5 +26,6 @@ public class Fissure extends Case {
                 e.setCase(cCible);
             }
         }
+        e.jeu.addCase(new Trou(this.x, this.y), this.x, this.y);
     }
 }
