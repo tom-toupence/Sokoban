@@ -26,15 +26,4 @@ public class Fissure extends Case {
     public boolean quitter(Entite e, Direction d, Case c) {
         return true;
     }
-
-    /**
-     * Le sol se transforme en trou
-     * @param e
-     * @param d
-     * @param c
-     * @return
-     */
-    public Case aprèsQuitterCase(Entite e, Direction d, Case c) {
-        return new Trou(c.getX(), c.getY());
-    }
 }
