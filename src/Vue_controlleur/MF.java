@@ -30,7 +30,7 @@ public class MF extends JFrame implements Observer {
         this.setSize(jeu.SIZE_X*48, jeu.SIZE_Y*48+50);
         this.setLocation(400,50);
         this.setIconImage(Favicon.getImage()) ;
-        
+        this.setResizable(false);
 
         JPanel jp = new JPanel(new BorderLayout());
         JPanel jpC = new JPanel(new GridLayout(jeu.SIZE_X, jeu.SIZE_Y));
@@ -196,7 +196,7 @@ public class MF extends JFrame implements Observer {
      * Charge les images du jeu
      */
     private void loadImages() {
-        String path = "src/assets/";
+        String path = "src/assets/img/";
         Mur = new ImageIcon(path+"Mur.png");
         Vide = new ImageIcon(path+"Sol.png");
         Heros = new ImageIcon(path+"Heros.png");
