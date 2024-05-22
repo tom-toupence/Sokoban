@@ -10,7 +10,7 @@ public class Menu extends JFrame{
         this.setTitle("Sokoban");
         this.setSize(750, 750);
         this.setLocation(400, 50);
-        this.setIconImage(new ImageIcon("src/assets/favicon.png").getImage());
+        this.setIconImage(new ImageIcon("src/assets/img/Favicon.png").getImage());
 
         JPanel panel = new JPanel(new BorderLayout());
 
