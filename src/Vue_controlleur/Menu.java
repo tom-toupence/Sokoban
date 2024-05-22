@@ -11,6 +11,7 @@ public class Menu extends JFrame{
         this.setSize(750, 750);
         this.setLocation(400, 50);
         this.setIconImage(new ImageIcon("src/assets/img/Favicon.png").getImage());
+        this.setResizable(false);
 
         JPanel panel = new JPanel(new BorderLayout());
 
