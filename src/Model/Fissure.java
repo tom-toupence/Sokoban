@@ -16,14 +16,4 @@ public class Fissure extends Case {
     public boolean entrer(Entite e, Direction d, Case c) {
         return true;
     }
-
-    /**
-     * Le sol se transforme en trou
-     * @param e l'entité qui veut quitter
-     * @param d la direction dans laquelle l'entité veut quitter
-     * @param c la case que l'entité veut quitter
-     */
-    public boolean quitter(Entite e, Direction d, Case c) {
-        return true;
-    }
 }
