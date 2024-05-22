@@ -1,7 +1,7 @@
-    package Vue_controlleur;
-    import javax.swing.*;
-    import java.awt.*;
-    import java.awt.event.*;
+package Vue_controlleur;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.File;
 
 public class Menu extends JFrame{
