@@ -31,17 +31,6 @@ public class Case extends Observable {
         return true;
     }
 
-    /**
-     * État de la case après que l'entité ait quitté la case
-     * @param e l'entite qui veut quitter
-     * @param d la direction dans laquelle l'entite veut quitter
-     * @param c la case que l'entite veut quitter
-     * @return la case après que l'entité ait quitté la case
-     */
-    public Case apresQuitter(Entite e, Direction d, Case c) {
-        return this;
-    }
-
     public Entite getEntite(){
         return entite;
     }

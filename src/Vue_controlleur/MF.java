@@ -165,7 +165,7 @@ public class MF extends JFrame implements Observer {
             }
         }
         
-        // Ajout des entités Bloc
+        // Ajout des entités Blocs
         for(Bloc b : jeu.blocs){
             Point positionBloc = b.getPosition();
             if (positionBloc != null) {
